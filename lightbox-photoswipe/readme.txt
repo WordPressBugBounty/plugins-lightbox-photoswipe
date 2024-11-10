@@ -4,7 +4,7 @@ Contributors: awelzel
 Tags: lightbox, photoswipe, attachments, images, gallery
 Requires at least: 5.3
 Tested up to: 6.7
-Stable tag: 5.4.1
+Stable tag: 5.5.0
 Donate link: https://paypal.me/ArnoWelzel
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -27,6 +27,10 @@ As of version 4.0.0 this plugin requires at least WordPress 5.3 and PHP 7.0. Old
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Frequently Asked Questions ==
+
+= Issues with "optimizing" plugins =
+
+The plugin uses JavaScript modules for PhotoSwipe 5. This will not work, if you use any kind of "JavaScript optimizing" with a WordPress plugin which combines all frontend scripts into one single file. Make sure that Lightbox with PhotoSwipe is excluded from any kind of "optimization", otherwise the plugin may not work.
 
 = Using the plugin =
 
@@ -98,13 +102,11 @@ add_filter('lbwps_caption_title', 'my_lbwps_caption_title', 10, 2);
 
 PhotoSwipe 5 improves the overall performance and compatibility with newer mobile devices like the iPhone 13. However, some features are no longer supported by that version:
 
-1) Updating the browser history when opening the lightbox or navigating through images (this is no longer supported by PhotoSwipe).
+1) Customizing the display of image counter and zoom button (this may be added in future updates).
 
-2) Customizing the display of image counter and zoom button (this may be added in future updates).
+2) All mobile specific options (some options may return in future updates).
 
-3) All mobile specific options (some options may return in future updates).
-
-4) Sharing options (some options may return in future updates).
+3) Sharing options (some options may return in future updates).
 
 = How to style the caption =
 
@@ -150,6 +152,12 @@ If you change any of the stylesheets or frontend scripts in `src/js` or `src/lib
 5. Desktop options in the backend
 
 == Changelog ==
+
+= 5.5.0 =
+
+PhotoSwipe 5 integration:
+
+* Implemented URL navigation to support the option "Update browser history" again. Going forward in the browser history after closing the lightbox will also open it again.
 
 = 5.4.1 =
 
