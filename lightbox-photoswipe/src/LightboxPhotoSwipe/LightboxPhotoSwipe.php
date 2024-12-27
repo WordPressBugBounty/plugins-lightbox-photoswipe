@@ -10,12 +10,13 @@ include_once ABSPATH . 'wp-admin/includes/plugin.php';
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.5.2';
+    const VERSION = '5.6.0';
     const SLUG = 'lightbox-photoswipe';
-    const META_VERSION = '19';
+    const META_VERSION = '20';
     const CACHE_EXPIRE_IMG_DETAILS = 86400;
     const DB_VERSION = 36;
     const BASEPATH = WP_PLUGIN_DIR.'/'.self::SLUG.'/';
+    const SUPPORTED_FORMATS = ['jpg', 'jpeg', 'jpe', 'gif', 'png', 'bmp', 'tif', 'tiff', 'ico', 'webp', 'svg', 'avif'];
 
     private $pluginFile;
     private $optionsManager;
@@ -66,7 +67,7 @@ class LightboxPhotoSwipe
                 add_filter('render_block', [$this, 'gutenbergBlock'], 10, 2);
             }
         }
-        add_action('plugins_loaded', [$this, 'init']);
+        add_action('init', [$this, 'init']);
         add_action('admin_menu', [$this, 'adminMenu']);
         add_action('admin_init', [$this, 'adminInit']);
 
@@ -290,6 +291,27 @@ class LightboxPhotoSwipe
             return $matches[1].$matches[2].$matches[3].$matches[4].$matches[5];
         }
 
+        $mimeTypes = get_allowed_mime_types();
+        if (!in_array('svg', $mimeTypes)) {
+            $mimeTypes['svg'] = 'image/svg+xml';
+        }
+
+        // If the "fix attachment links" option is enabled and the URL itself is
+        // not a direct link to a supported image format, then check if the
+        // URL is an attachment link and use the image link instead
+        if ('1' === $this->optionsManager->getOption('fix_attachment_links')) {
+            $type = wp_check_filetype($matches[2], $mimeTypes);
+            if (!in_array(strtolower($type['ext']), self::SUPPORTED_FORMATS)) {
+                $id = url_to_postid($matches[2]);
+                if (0 !== $id) {
+                    $src = wp_get_attachment_image_src($id, 'full');
+                    if (false !== $src) {
+                        $matches[2] = $src[0];
+                    }
+                }
+            }
+        }
+
         $use = true;
         $attr = '';
         $url = $matches[2];
@@ -315,10 +337,6 @@ class LightboxPhotoSwipe
             $file = $this->getHomeUrl() . $file;
         }
 
-        $mimeTypes = get_allowed_mime_types();
-        if (!in_array('svg', $mimeTypes)) {
-            $mimeTypes['svg'] = 'image/svg+xml';
-        }
         $type = wp_check_filetype($file, $mimeTypes);
         $extension = strtolower($type['ext']);
         $captionCaption = '';
@@ -326,7 +344,8 @@ class LightboxPhotoSwipe
         $captionTitle = '';
         $captionFilename = '';
         $isLocal = false;
-        if (!in_array($extension, ['jpg', 'jpeg', 'jpe', 'gif', 'png', 'bmp', 'tif', 'tiff', 'ico', 'webp', 'svg', 'avif'])) {
+
+        if (!in_array($extension, self::SUPPORTED_FORMATS)) {
             // Ignore unknown image formats
             $use = false;
         } else {
@@ -492,11 +511,12 @@ class LightboxPhotoSwipe
                 $imgMtime = 0;
             }
 
-            $cacheKey = sprintf('%s-%s-image-%s',self::META_VERSION, self::SLUG, hash('md5', $file.$imgMtime));
-            if ($this->optionsManager->getOption('use_transients')) {
-                $imgDetails = get_transient($cacheKey);
-            } else {
-                $imgDetails = false;
+            $imgDetails = false;
+            if (!defined('WP_DEBUG') || WP_DEBUG !== true) {
+                $cacheKey = sprintf('%s-%s-image-%s', self::META_VERSION, self::SLUG, hash('md5', $file.$imgMtime));
+                if ($this->optionsManager->getOption('use_transients')) {
+                    $imgDetails = get_transient($cacheKey);
+                }
             }
             if (!$imgDetails) {
                 $imageSize = $this->getImageSize($file . $params, $extension);
@@ -567,7 +587,7 @@ class LightboxPhotoSwipe
                             }
                         }
                     }
-                    if ($this->optionsManager->getOption('use_transients')) {
+                    if ((!defined('WP_DEBUG') || WP_DEBUG !== true) && $this->optionsManager->getOption('use_transients')) {
                         set_transient($cacheKey, $imgDetails, self::CACHE_EXPIRE_IMG_DETAILS);
                     }
                 }
@@ -1130,19 +1150,16 @@ class LightboxPhotoSwipe
                 $svgContent = simplexml_load_file($file);
                 if (false !== $svgContent) {
                     $svgAttributes = $svgContent->attributes();
-                    if (isset($svgAttributes->width) && isset($svgAttributes->height)) {
-                        $imageSize[0] = rtrim($svgAttributes->width, 'px');
-                        $imageSize[1] = rtrim($svgAttributes->height, 'px');
-                    } else {
-                        $viewBox = false;
-                        if (isset($svgAttributes->viewBox)) {
-                            $viewBox = explode(' ', $svgAttributes->viewBox, 4);
-                        } else if (isset($svgAttributes->viewbox)) {
-                            $viewBox = explode(' ', $svgAttributes->viewbox, 4);
-                        }
-                        if ($viewBox !== false) {
+                    if (isset($svgAttributes->viewBox)) {
+                        $viewBox = explode(' ', $svgAttributes->viewBox, 4);
+                        if ($viewBox !== false && count($viewBox) == 4) {
                             $imageSize[0] = (int)($viewBox[2] - $viewBox[0]);
                             $imageSize[1] = (int)($viewBox[3] - $viewBox[1]);
+                        }
+                    } else if (isset($svgAttributes->width) && isset($svgAttributes->height)) {
+                        if (str_ends_with($svgAttributes->width, 'px') && str_ends_with($svgAttributes->height, 'px')) {
+                            $imageSize[0] = rtrim($svgAttributes->width, 'px');
+                            $imageSize[1] = rtrim($svgAttributes->height, 'px');
                         }
                     }
                 }
