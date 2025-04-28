@@ -3,8 +3,8 @@
 Contributors: awelzel
 Tags: lightbox, photoswipe, attachments, images, gallery
 Requires at least: 5.3
-Tested up to: 6.7
-Stable tag: 5.6.1
+Tested up to: 6.8
+Stable tag: 5.6.2
 Donate link: https://paypal.me/ArnoWelzel
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -17,7 +17,7 @@ This plugin integrates PhotoSwipe to WordPress. All linked images in a post or p
 
 More about the original version of PhotoSwipe see here: [http://photoswipe.com](http://photoswipe.com)
 
-You can also display EXIF data from JPEG and WEBP images.
+You can also display EXIF data from supported image types.
 
 As of version 4.0.0 this plugin requires at least WordPress 5.3 and PHP 7.0. Older PHP version will cause problems. In this case you have to upgrade your PHP version or ask your hoster to do so. Please note that WordPress itself also recommends at least PHP 7.4 - see [https://wordpress.org/about/requirements/](https://wordpress.org/about/requirements/).
 
@@ -154,6 +154,11 @@ If you change any of the stylesheets or frontend scripts in `src/js` or `src/lib
 5. Desktop options in the backend
 
 == Changelog ==
+
+= 5.6.2 =
+
+* Updated compatibility information for WordPress 6.8.
+* Updated PhotoSwipe 5 to version 5.4.4.
 
 = 5.6.1 =
 
