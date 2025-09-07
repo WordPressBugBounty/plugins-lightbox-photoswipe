@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-27 02:56+0000\n"
+"POT-Creation-Date: 2025-09-07 19:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -82,7 +82,7 @@ msgid ""
 msgstr ""
 
 #: templates/frontend.inc.php:12
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1046
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1050
 msgid "Close [Esc]"
 msgstr ""
 
@@ -95,7 +95,7 @@ msgid "Close with vertical drag in mobile view"
 msgstr ""
 
 #: templates/options-tab5.inc.php:14
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1045
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1049
 msgid "Copy image URL"
 msgstr ""
 
@@ -124,12 +124,12 @@ msgstr ""
 msgid "Desktop"
 msgstr ""
 
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:792
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:796
 msgid "Disable"
 msgstr ""
 
 #: templates/options-tab5.inc.php:13
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1044
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1048
 msgid "Download image"
 msgstr ""
 
@@ -199,8 +199,8 @@ msgstr ""
 
 #: templates/options-tab2.inc.php:53
 msgid ""
-"Fix links to scaled images (e.g.\"image.jpg\" instead of \"image-scaled."
-"jpg\")"
+"Fix links to scaled or rotated images (e.g. \"image.jpg\" instead of \"image-"
+"scaled.jpg\" or \"image-rotated.jpg\")"
 msgstr ""
 
 #: templates/options-tab1.inc.php:44
@@ -313,9 +313,9 @@ msgstr ""
 #. Name of the plugin
 #. Description of the plugin
 #: templates/options.inc.php:12
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:739
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:740
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:772
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:743
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:744
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:776
 msgid "Lightbox with PhotoSwipe"
 msgstr ""
 
@@ -358,7 +358,7 @@ msgid "New share symbol with solid background"
 msgstr ""
 
 #: templates/frontend.inc.php:29
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1049
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1053
 msgid "Next [→]"
 msgstr ""
 
@@ -397,7 +397,7 @@ msgid "PHP version"
 msgstr ""
 
 #: templates/options-tab5.inc.php:12
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1043
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1047
 msgid "Pin it"
 msgstr ""
 
@@ -423,7 +423,7 @@ msgid "Prefix"
 msgstr ""
 
 #: templates/frontend.inc.php:28
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1048
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1052
 msgid "Previous [←]"
 msgstr ""
 
@@ -458,7 +458,7 @@ msgid "Share"
 msgstr ""
 
 #: templates/options-tab5.inc.php:9
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1041
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1045
 msgid "Share on Facebook"
 msgstr ""
 
@@ -544,7 +544,7 @@ msgid ""
 "done for version 4 may not work for version 5."
 msgstr ""
 
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1050
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1054
 msgid "The image cannot be loaded"
 msgstr ""
 
@@ -579,7 +579,7 @@ msgid "Title"
 msgstr ""
 
 #: templates/frontend.inc.php:14
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1051
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1055
 msgid "Toggle fullscreen [F]"
 msgstr ""
 
@@ -588,7 +588,7 @@ msgid "top"
 msgstr ""
 
 #: templates/options-tab5.inc.php:10
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1042
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1046
 msgid "Tweet"
 msgstr ""
 
@@ -651,7 +651,7 @@ msgstr ""
 msgid "Your label here"
 msgstr ""
 
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1047
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1051
 msgid "Zoom"
 msgstr ""
 

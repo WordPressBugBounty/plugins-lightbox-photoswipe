@@ -20,9 +20,9 @@ This style is based on the original stylesheet of PhotoSwipe 5 and contains the 
 
 If you like to use the plugins for fullscreen mode and automatic hiding of the UI in desktop mode, you find these also on Github:
 
-[Auto hide UI for PhotoSwipe](https://github.com/arnowelzel/photoswipe-auto-hide-ui)
+[Auto hide UI for PhotoSwipe](https://codeberg.org/askaaron/photoswipe-auto-hide-ui)
 
-[Fullscreen for PhotoSwipe](https://github.com/arnowelzel/photoswipe-fullscreen)
+[Fullscreen for PhotoSwipe](https://codeberg.org/askaaron/photoswipe-fullscreen)
 
 In addition a slightly modified version of the "dynamic caption" plugin by is also included:
 

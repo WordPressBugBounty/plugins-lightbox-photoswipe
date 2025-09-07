@@ -10,9 +10,9 @@ include_once ABSPATH . 'wp-admin/includes/plugin.php';
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.7.2';
+    const VERSION = '5.7.3';
     const SLUG = 'lightbox-photoswipe';
-    const META_VERSION = '21';
+    const META_VERSION = '22';
     const CACHE_EXPIRE_IMG_DETAILS = 86400;
     const DB_VERSION = 36;
     const BASEPATH = WP_PLUGIN_DIR.'/'.self::SLUG.'/';
@@ -443,9 +443,10 @@ class LightboxPhotoSwipe
 
                 // Keep original file name variations for metadata retrieval
                 $fileOriginal = $file;
-                $fileOriginalNoScaled = $file;
+                $fileOriginalNoRotatedScaled = $file;
                 $fileOriginalNoSize = $file;
                 $fileOriginalScaled = $file;
+                $fileOriginalRotated = $file;
 
                 // If the "fix image links" option is set, try to remove size parameters from the image link.
                 // For example: "image-1024x768.jpg" will become "image.jpg"
@@ -453,6 +454,7 @@ class LightboxPhotoSwipe
                 $fileFixed = preg_filter($sizeMatcher, '.', $file);
                 if ($fileFixed !== null && $fileFixed !== $file) {
                     $fileOriginalScaled = substr($fileFixed, 0, -1) . '-scaled.' . $extension;
+                    $fileOriginalRotated = substr($fileFixed, 0, -1) . '-rotated.' . $extension;
                 }
                 if ('1' === $this->optionsManager->getOption('fix_links')) {
                     if ($fileFixed !== null && $fileFixed !== $file) {
@@ -465,17 +467,18 @@ class LightboxPhotoSwipe
                     }
                 }
 
-                // If the "fix scaled image links" option is set, try to remove "-scaled" from the image link.
+                // If the "fix scaled/rotated image links" option is set,
+                // try to remove "-scaled" or "-rotated" from the image link.
                 // For example: "image-scaled.jpg" will become "image.jpg"
-                $scaledMatcher = '/(-scaled\.).+$/';
+                $scaledRotatedMatcher = '/(-scaled\.|-rotated\.).+$/';
                 if ('1' === $this->optionsManager->getOption('fix_scaled')) {
-                    $fileFixed = preg_filter($scaledMatcher, '.', $file);
+                    $fileFixed = preg_filter($scaledRotatedMatcher, '.', $file);
                     if ($fileFixed !== null && $fileFixed !== $file) {
                         $file = $fileFixed . $extension;
-                        $matches[2] = preg_filter($scaledMatcher, '.', $matches[2]) . $extension;
+                        $matches[2] = preg_filter($scaledRotatedMatcher, '.', $matches[2]) . $extension;
 
                         if ($file !== $fileOriginal) {
-                            $fileOriginalNoScaled = $file;
+                            $fileOriginalNoRotatedScaled = $file;
                         }
                     }
                 }
@@ -484,11 +487,12 @@ class LightboxPhotoSwipe
                 if ('1' === $this->optionsManager->getOption('usepostdata') && '1' === $this->optionsManager->getOption('show_caption')) {
                     $imgId = $wpdb->get_col(
                         $wpdb->prepare(
-                            'SELECT post_id FROM '.$wpdb->postmeta.' WHERE meta_key = "_wp_attached_file" and meta_value in (%s, %s, %s, %s);',
+                            'SELECT post_id FROM '.$wpdb->postmeta.' WHERE meta_key = "_wp_attached_file" and meta_value in (%s, %s, %s, %s, %s);',
                             str_replace ($uploadDir . '/', '', $fileOriginal),
                             str_replace ($uploadDir . '/', '', $fileOriginalNoSize),
-                            str_replace ($uploadDir . '/', '', $fileOriginalNoScaled),
+                            str_replace ($uploadDir . '/', '', $fileOriginalNoRotatedScaled),
                             str_replace ($uploadDir . '/', '', $fileOriginalScaled),
+                            str_replace ($uploadDir . '/', '', $fileOriginalRotated),
                         )
                     );
                     if (isset($imgId[0])) {

@@ -4,7 +4,7 @@ Contributors: awelzel
 Tags: lightbox, photoswipe, attachments, images, gallery
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 5.7.2
+Stable tag: 5.7.3
 Donate link: https://paypal.me/ArnoWelzel
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -141,9 +141,11 @@ Reading SVG files also requires the SimpleXML extension for PHP to be available.
 
 To avoid any confusion: this plugin was published with the agreement of Dmytro Semenov.
 
-= Notes for developers =
+= Source and contributing =
 
 If you change any of the stylesheets or frontend scripts in `src/js` or `src/lib` you need to run `make build` to generate new compressed frontend assets.
+
+The main repository for the source code can be found at [https://codeberg.org/askaaron/lightbox-photoswipe](https://codeberg.org/askaaron/lightbox-photoswipe).
 
 == Screenshots ==
 
@@ -154,6 +156,10 @@ If you change any of the stylesheets or frontend scripts in `src/js` or `src/lib
 5. Desktop options in the backend
 
 == Changelog ==
+
+= 5.7.3 =
+
+* Added optional removing "-rotated" from image links in addition to "-scaled".
 
 = 5.7.2 =
 
