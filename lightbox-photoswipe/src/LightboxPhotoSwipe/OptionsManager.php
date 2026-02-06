@@ -1,6 +1,4 @@
 <?php
-namespace LightboxPhotoSwipe;
-
 /**
  * Options manager
  */
@@ -25,6 +23,7 @@ class OptionsManager
         'loop' => [ 'default' => '1' ],
         'pinchtoclose' => [ 'default' => '1' ],
         'show_fullscreen' => [ 'default' => '1' ],
+        'show_download' => [ 'default' => '0' ],
         'taptotoggle' => [ 'default' => '1' ],
         'share_direct' => [ 'default' => '0' ],
         'close_on_click' => [ 'default' => '1' ],

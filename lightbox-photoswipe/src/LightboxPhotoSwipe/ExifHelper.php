@@ -1,6 +1,4 @@
 <?php
-namespace LightboxPhotoSwipe;
-
 /**
  * Functions to get EXIF data from images
  */

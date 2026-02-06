@@ -1,6 +1,4 @@
 <?php
-namespace LightboxPhotoSwipe;
-
 defined('ABSPATH') or die();
 
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -10,7 +8,7 @@ include_once ABSPATH . 'wp-admin/includes/plugin.php';
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.7.3';
+    const VERSION = '5.8.2';
     const SLUG = 'lightbox-photoswipe';
     const META_VERSION = '22';
     const CACHE_EXPIRE_IMG_DETAILS = 86400;
@@ -260,16 +258,14 @@ class LightboxPhotoSwipe
         }
 
         $version = apply_filters('lbwps_version', $this->optionsManager->getOption('version'), get_the_ID());
-        if (4 !== (int)$version) {
-            return;
+        if (4 === (int)$version) {
+            ob_start();
+            include(self::BASEPATH.'templates/frontend.inc.php');
+            $footer = ob_get_clean();
+
+            $footer = apply_filters('lbwps_markup', $footer);
+            echo $footer;
         }
-
-        ob_start();
-        include(self::BASEPATH.'templates/frontend.inc.php');
-        $footer = ob_get_clean();
-
-        $footer = apply_filters('lbwps_markup', $footer);
-        echo $footer;
 
         if ($this->obActive) {
             $this->obActive = false;
@@ -1053,6 +1049,7 @@ class LightboxPhotoSwipe
             'label_ui_next' => __('Next [→]', 'lightbox-photoswipe'),
             'label_ui_error' => __('The image cannot be loaded', 'lightbox-photoswipe'),
             'label_ui_fullscreen' => __('Toggle fullscreen [F]', 'lightbox-photoswipe'),
+            'label_ui_download' => __('Download image', 'lightbox-photoswipe'),
         ];
         $boolOptions = [
             'share_facebook',
@@ -1065,6 +1062,7 @@ class LightboxPhotoSwipe
             'history',
             'show_counter',
             'show_fullscreen',
+            'show_download',
             'show_zoom',
             'show_caption',
             'loop',

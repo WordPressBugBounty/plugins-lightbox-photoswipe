@@ -18,11 +18,13 @@ This style is based on the original stylesheet of PhotoSwipe 5 and contains the 
 
 ## Plugins for PhotoSwipe
 
-If you like to use the plugins for fullscreen mode and automatic hiding of the UI in desktop mode, you find these also on Github:
+If you like to use the plugins for fullscreen mode, automatic hiding of the UI in desktop mode or the "download image" button with your own PhotoSwipe based projects, you find these also on Codeberg:
 
 [Auto hide UI for PhotoSwipe](https://codeberg.org/askaaron/photoswipe-auto-hide-ui)
 
 [Fullscreen for PhotoSwipe](https://codeberg.org/askaaron/photoswipe-fullscreen)
+
+[Download for PhotoSwipe](https://codeberg.org/askaaron/photoswipe-download)
 
 In addition a slightly modified version of the "dynamic caption" plugin by is also included:
 

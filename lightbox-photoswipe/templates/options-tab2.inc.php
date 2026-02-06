@@ -33,8 +33,9 @@
             <?php echo __('Visible elements', 'lightbox-photoswipe'); ?>
         </th>
         <td>
-            <label class="lbwps-ver4"><?php $this->uiControlCheckbox('show_counter') ?>&nbsp;<?php echo __('Show picture counter', 'lightbox-photoswipe'); ?></label><br class="lbwps-ver4">
             <label><?php $this->uiControlCheckbox('show_fullscreen') ?>&nbsp;<?php echo __('Show fullscreen button', 'lightbox-photoswipe'); ?></label><br>
+            <label class="lbwps-ver5"><?php $this->uiControlCheckbox('show_download') ?>&nbsp;<?php echo __('Show download button', 'lightbox-photoswipe'); ?></label>
+            <label class="lbwps-ver4"><?php $this->uiControlCheckbox('show_counter') ?>&nbsp;<?php echo __('Show picture counter', 'lightbox-photoswipe'); ?></label><br>
             <label class="lbwps-ver4"><?php $this->uiControlCheckbox('show_zoom') ?>&nbsp;<?php echo __('Show zoom button if available', 'lightbox-photoswipe'); ?></label>
         </td>
     </tr>

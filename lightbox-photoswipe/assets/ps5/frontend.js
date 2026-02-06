@@ -2,6 +2,7 @@ import PhotoSwipeLightbox from './lib/photoswipe-lightbox.esm.min.js';
 import PhotoSwipeDynamicCaption from './dynamic-caption/photoswipe-dynamic-caption-plugin.esm.min.js';
 import PhotoSwipeAutoHideUI from './auto-hide-ui/photoswipe-auto-hide-ui.esm.min.js';
 import PhotoSwipeFullscreen from './fullscreen/photoswipe-fullscreen.esm.min.js';
+import PhotoSwipeDownload from './download/photoswipe-download.esm.min.js';
 
 let lbwpsInit = function(domUpdate) {
     // Original styles to be used to hide/show scrollbars
@@ -399,6 +400,13 @@ let lbwpsInit = function(domUpdate) {
         if (lbwpsOptions.show_fullscreen === '1') {
             const fullscreenPlugin = new PhotoSwipeFullscreen(lightbox, {
                 fullscreenTitle: lbwpsOptions.label_ui_fullscreen
+            });
+        }
+		
+		// Add download button
+        if (lbwpsOptions.show_download === '1') {
+            const downloadPlugin = new PhotoSwipeDownload(lightbox, {
+                downloadTitle: lbwpsOptions.label_ui_download
             });
         }
 
