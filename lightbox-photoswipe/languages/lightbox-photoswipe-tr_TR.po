@@ -1,17 +1,18 @@
-#, fuzzy
+# Translation of Lightbox with PhotoSwipe in Turkish
+# This file is distributed under the same license as the PACKAGE package.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Lightbox with PhotoSwipe\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-26 07:59+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"POT-Creation-Date: 2025-12-02 22:20+0000\n"
+"PO-Revision-Date: 2026-02-26 08:01+0000\n"
+"Last-Translator: Your Name <email@example.com>\n"
+"Language-Team: Turkish\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Loco https://localise.biz/"
 
 #: templates/options-tab4.inc.php:28
@@ -19,6 +20,8 @@ msgid ""
 "<a href=\"https://www.php.net/manual/en/book.exif.php\" target=\"_blank\">"
 "the PHP EXIF extension</a> is missing on this server!"
 msgstr ""
+"Bu sunucuda <a href=\"https://www.php.net/manual/en/book.exif.php\" "
+"target=\"_blank\">PHP EXIF eklentisi</a> eksik!"
 
 #: templates/options-tab2.inc.php:77
 msgid ""
@@ -26,52 +29,57 @@ msgid ""
 "target=\"_blank\">The PHP SimpleXML extension</a> is missing on this server! "
 "SVG images can not be displayed!"
 msgstr ""
+"Bu sunucuda <a href=\"https://www.php.net/manual/en/ref.simplexml.php\" "
+"target=\"_blank\">PHP SimpleXML eklentisi</a> eksik! SVG resimleri "
+"gösterilemez!"
 
 #: templates/options-tab2.inc.php:48
 msgid "Allow infinite loop"
-msgstr ""
+msgstr "Sonsuz döngüye izin ver"
 
 #: templates/options-tab4.inc.php:19
 msgid "Alternative text"
-msgstr ""
+msgstr "Alternatif metin"
 
 #. Author of the plugin
 msgid "Arno Welzel"
-msgstr ""
+msgstr "Arno Welzel"
 
 #: templates/options-tab2.inc.php:28
 msgid "Available post types on this site"
-msgstr ""
+msgstr "Bu sitedeki mevcut yazı türleri"
 
 #: templates/options-tab3.inc.php:47
 msgid "Background opacity"
-msgstr ""
+msgstr "Arka plan opaklığı"
 
 #: templates/options-tab3.inc.php:72
 msgid "bottom"
-msgstr ""
+msgstr "alt"
 
 #: templates/options-tab2.inc.php:57
 msgid ""
 "Cache image information in transients (disabling this can slow down your "
 "website, try an object cache first)"
 msgstr ""
+"Resim bilgilerini geçici (transient) olarak önbelleğe al (devre dışı "
+"bırakmak sitenizi yavaşlatabilir, önce bir nesne önbelleği deneyin)"
 
 #: templates/options-tab4.inc.php:17
 msgid "Caption"
-msgstr ""
+msgstr "Altyazı"
 
 #: templates/options-navigation.inc.php:5
 msgid "Captions"
-msgstr ""
+msgstr "Altyazılar"
 
 #: templates/options-tab2.inc.php:92
 msgid "CDN mode"
-msgstr ""
+msgstr "CDN modu"
 
 #: templates/options-tab2.inc.php:82
 msgid "CDN URL prefix"
-msgstr ""
+msgstr "CDN URL ön eki"
 
 #: templates/options-tab2.inc.php:96
 msgid ""
@@ -80,85 +88,91 @@ msgid ""
 "domain of the website is replaced by the CDN domain. If images don't show up "
 "with the CDN active try another mode."
 msgstr ""
+"CDN'ler genellikle tüm URL'nin önüne CDN alan adını ekleyen \"ön ek modu\"nu "
+"kullanır. ExactDN gibi bazı CDN'ler ise yalnızca web sitesinin alan adının "
+"CDN alan adıyla değiştirildiği \"çekme modu\"nu kullanır. CDN etkinken "
+"resimler görünmüyorsa diğer modu deneyin."
 
 #: templates/frontend.inc.php:12
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1052
 msgid "Close [Esc]"
-msgstr ""
+msgstr "Kapat [Esc]"
 
 #: templates/options-tab6.inc.php:11
 msgid "Close the lightbox by clicking outside the image"
-msgstr ""
+msgstr "Resmin dışına tıklayarak lightbox'ı kapat"
 
 #: templates/options-tab7.inc.php:9
 msgid "Close with vertical drag in mobile view"
-msgstr ""
+msgstr "Mobil görünümde dikey sürüklemeyle kapat"
 
 #: templates/options-tab5.inc.php:14
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1051
 msgid "Copy image URL"
-msgstr ""
+msgstr "Resim URL'sini kopyala"
 
 #: templates/options-tab5.inc.php:15
 msgid "Custom link"
-msgstr ""
+msgstr "Özel bağlantı"
 
 #: templates/options-tab5.inc.php:20
 msgid "Custom link, label"
-msgstr ""
+msgstr "Özel bağlantı, etiket"
 
 #: templates/options-tab5.inc.php:28
 msgid "Custom link, URL"
-msgstr ""
+msgstr "Özel bağlantı, URL"
 
 #: templates/options-tab2.inc.php:71 templates/options-tab6.inc.php:55
 #: templates/options-tab3.inc.php:37 templates/options-tab3.inc.php:56
 msgid "Default"
-msgstr ""
+msgstr "Varsayılan"
 
 #: templates/options-tab4.inc.php:18
 msgid "Description"
-msgstr ""
+msgstr "Açıklama"
 
 #: templates/options-navigation.inc.php:7
 msgid "Desktop"
-msgstr ""
+msgstr "Masaüstü"
 
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:798
 msgid "Disable"
-msgstr ""
+msgstr "Devre dışı bırak"
 
 #: templates/options-tab5.inc.php:13
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1050
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1058
 msgid "Download image"
-msgstr ""
+msgstr "Resmi indir"
 
 #: templates/options-tab4.inc.php:38
 msgid "dynamic, aside"
-msgstr ""
+msgstr "dinamik, yanda"
 
 #: templates/options-tab4.inc.php:38
 msgid "dynamic, automatic"
-msgstr ""
+msgstr "dinamik, otomatik"
 
 #: templates/options-tab4.inc.php:38
 msgid "dynamic, below"
-msgstr ""
+msgstr "dinamik, altta"
 
 #: templates/options-tab7.inc.php:10
 msgid "Enable pinch to close gesture on mobile devices"
-msgstr ""
+msgstr "Mobil cihazlarda kapatmak için kıstırma hareketini etkinleştir"
 
 #: templates/options-tab7.inc.php:11
 msgid "Enable tap to toggle controls on mobile devices"
-msgstr ""
+msgstr "Mobil cihazlarda kontrolleri açıp kapatmak için dokunmayı etkinleştir"
 
 #: templates/options-tab2.inc.php:27
 msgid ""
 "Enter a comma separated list of post types where the lightbox should not be "
 "used."
 msgstr ""
+"Lightbox'ın kullanılmaması gereken yazı türlerinin virgülle ayrılmış "
+"listesini girin."
 
 #: templates/options-tab2.inc.php:17
 msgid ""
@@ -166,47 +180,55 @@ msgid ""
 "the lightbox should not be used. This can also be changed in the page/post "
 "itself."
 msgstr ""
+"Lightbox'ın kullanılmaması gereken sayfaların/yazıların sayısal ID'lerinin "
+"virgülle ayrılmış listesini girin. Bu, sayfa/yazı düzenleyicisinden de "
+"değiştirilebilir."
 
 #: templates/options-tab2.inc.php:13
 msgid "Excluded pages/posts"
-msgstr ""
+msgstr "Hariç tutulan sayfalar/yazılar"
 
 #: templates/options-tab2.inc.php:23
 msgid "Excluded post types"
-msgstr ""
+msgstr "Hariç tutulan yazı türleri"
 
 #: templates/options-tab4.inc.php:25
 msgid "EXIF information"
-msgstr ""
+msgstr "EXIF bilgisi"
 
 #: templates/options-tab2.inc.php:76
 msgid "Factor by which SVG images get scaled when displayed in the lightbox."
-msgstr ""
+msgstr "Lightbox'ta gösterilirken SVG resimlerinin ölçeklendirileceği faktör."
 
 #: templates/options-tab4.inc.php:20
 msgid "File name"
-msgstr ""
+msgstr "Dosya adı"
 
 #: templates/options-tab2.inc.php:55
 msgid ""
 "Fix links to attachment pages instead of images (may slow down your website)"
 msgstr ""
+"Bağlantıları resimler yerine ek sayfalarına düzelt (sitenizi yavaşlatabilir)"
 
 #: templates/options-tab2.inc.php:53
 msgid ""
 "Fix links to images which include image sizes (e.g. \"image-1024x768.jpg\" "
 "instead of \"image.jpg\")"
 msgstr ""
+"Resim boyutlarını içeren resim bağlantılarını düzelt (ör. \"image.jpg\" "
+"yerine \"image-1024x768.jpg\")"
 
 #: templates/options-tab2.inc.php:54
 msgid ""
 "Fix links to scaled or rotated images (e.g. \"image.jpg\" instead of \"image-"
 "scaled.jpg\" or \"image-rotated.jpg\")"
 msgstr ""
+"Ölçeklenmiş veya döndürülmüş resim bağlantılarını düzelt (ör. \"image-scaled."
+"jpg\" veya \"image-rotated.jpg\" yerine \"image.jpg\")"
 
 #: templates/options-tab1.inc.php:44
 msgid "For documentation about hooks, styling etc. please see FAQ"
-msgstr ""
+msgstr "Hook'lar, stil vb. hakkında belgeler için lütfen SSS bölümüne bakın"
 
 #. %d value for image size
 #: templates/options-tab1.inc.php:35
@@ -217,6 +239,11 @@ msgid ""
 "pixels. The plugin will take rounding errors into account and will also "
 "check for images which are one pixel less or more wide or high."
 msgstr ""
+"Örneğin: bir resim 1000×400 piksel ise, kayıtlı en küçük resim boyutu %d×%d "
+"piksel olduğu için küçük sürümü %d×%d piksel olmalıdır. Dikey bir resim "
+"820×1400 piksel ise küçük sürümü %d×%d piksel olmalıdır. Eklenti yuvarlama "
+"hatalarını dikkate alacak ve bir piksel eksik veya fazla genişlik/yüksekliğe "
+"sahip resimleri de kontrol edecektir."
 
 #: templates/options-tab1.inc.php:20
 msgid ""
@@ -224,48 +251,56 @@ msgid ""
 "version of the linked image if available. The registered image sizes on this "
 "website are as following"
 msgstr ""
+"PhotoSwipe açılış geçişi için eklenti, varsa bağlantılı resmin daha küçük "
+"bir sürümünü kullanacaktır. Bu web sitesinde kayıtlı resim boyutları "
+"aşağıdaki gibidir"
 
 #: templates/options-tab6.inc.php:9
 msgid "Full picture size in desktop view"
-msgstr ""
+msgstr "Masaüstü görünümünde tam resim boyutu"
 
 #: templates/options-navigation.inc.php:3 templates/options-tab7.inc.php:6
 #: templates/options-tab6.inc.php:6 templates/options-tab4.inc.php:4
 msgid "General"
-msgstr ""
+msgstr "Genel"
 
 #: templates/options-tab4.inc.php:8
 msgid ""
 "Get the image captions from the database (this may cause delays on slower "
 "servers)"
 msgstr ""
+"Resim altyazılarını veritabanından al (daha yavaş sunucularda gecikmelere "
+"neden olabilir)"
 
 #: templates/options-tab3.inc.php:82
 msgid "height"
-msgstr ""
+msgstr "yükseklik"
 
 #: templates/options-tab2.inc.php:52
 msgid ""
 "Hide scrollbars when opening the lightbox (this may not work with your theme)"
 msgstr ""
+"Lightbox açılırken kaydırma çubuklarını gizle (temanızla çalışmayabilir)"
 
 #. Author URI of the plugin
 msgid "http://arnowelzel.de"
-msgstr ""
+msgstr "http://arnowelzel.de"
 
 #. URI of the plugin
 msgid "https://wordpress.org/plugins/lightbox-photoswipe/"
-msgstr ""
+msgstr "https://wordpress.org/plugins/lightbox-photoswipe/"
 
 #: templates/options-tab6.inc.php:38
 msgid "Idle time for controls"
-msgstr ""
+msgstr "Kontroller için bekleme süresi"
 
 #: templates/options-tab1.inc.php:17
 msgid ""
 "If you like my WordPress plugins and want to support my work I would be very "
 "happy about a donation via PayPal."
 msgstr ""
+"WordPress eklentilerimi beğeniyor ve çalışmalarımı desteklemek istiyorsanız "
+"PayPal üzerinden yapacağınız bir bağış beni çok mutlu eder."
 
 #: templates/options-tab2.inc.php:87
 msgid ""
@@ -276,20 +311,28 @@ msgid ""
 "You also need this if you want to use image captions from the WordPress "
 "database but serve images using a CDN."
 msgstr ""
+"Resim bağlantısının önüne bir URL ön eki ekleyen bir CDN eklentisi "
+"kullanıyorsanız, bu ön eki (\"http://\" veya \"https://\" dahil) buraya "
+"ekleyebilirsiniz. Virgülle ayırarak birden çok ön ek girebilirsiniz. Resim "
+"meta verileri daha sonra yerel dosyadan alınabilir ve resim CDN'den "
+"yüklenmez. WordPress veritabanından resim altyazılarını kullanmak ancak "
+"resimleri bir CDN kullanarak sunmak istiyorsanız buna da ihtiyacınız vardır."
 
 #: templates/options-tab2.inc.php:86
 msgid ""
 "If you use the JetPack CDN you can leave this setting empty – JetPack is "
 "already supported!"
 msgstr ""
+"JetPack CDN kullanıyorsanız bu ayarı boş bırakabilirsiniz – JetPack zaten "
+"destekleniyor!"
 
 #: templates/options-tab2.inc.php:50
 msgid "Ignore links to images on other sites"
-msgstr ""
+msgstr "Diğer sitelerdeki resim bağlantılarını yoksay"
 
 #: templates/options-tab2.inc.php:51
 msgid "Ignore links to images which contain a hash (#)"
-msgstr ""
+msgstr "Diyez (#) işareti içeren resim bağlantılarını yoksay"
 
 #: templates/options-tab1.inc.php:43
 msgid ""
@@ -298,18 +341,23 @@ msgid ""
 "you can use caching plugins like <a href=\"https://wordpress."
 "org/plugins/redis-cache/\" target=\"_blank\">Redis Object Cache</a>."
 msgstr ""
+"Boyut, EXIF verileri, önizleme resminin adı gibi resim bilgileri WordPress "
+"geçici (transient) olarak önbelleğe alınır. Büyük resim galerilerinde "
+"performansı artırmak için <a href=\"https://wordpress.org/plugins/redis-"
+"cache/\" target=\"_blank\">Redis Object Cache</a> gibi önbellekleme "
+"eklentilerini kullanabilirsiniz."
 
 #: templates/options-tab3.inc.php:66
 msgid "Image padding"
-msgstr ""
+msgstr "Resim iç boşluğu"
 
 #: templates/options-navigation.inc.php:2
 msgid "Info"
-msgstr ""
+msgstr "Bilgi"
 
 #: templates/options-tab3.inc.php:69
 msgid "left"
-msgstr ""
+msgstr "sol"
 
 #. Name of the plugin
 #. Description of the plugin
@@ -318,93 +366,97 @@ msgstr ""
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:746
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:778
 msgid "Lightbox with PhotoSwipe"
-msgstr ""
+msgstr "PhotoSwipe ile Lightbox"
 
 #: templates/options-tab3.inc.php:78
 msgid "Maximum image size"
-msgstr ""
+msgstr "Maksimum resim boyutu"
 
 #: templates/options-tab3.inc.php:83
 msgid ""
 "Maximum width or height to be used for images in px, leave empty for "
 "automatic sizing."
 msgstr ""
+"Resimler için kullanılacak maksimum genişlik veya yükseklik (px cinsinden), "
+"otomatik boyutlandırma için boş bırakın."
 
 #: templates/options-tab1.inc.php:4
 msgid "Metadata version"
-msgstr ""
+msgstr "Meta veri sürümü"
 
 #: templates/options-navigation.inc.php:8
 msgid "Mobile"
-msgstr ""
+msgstr "Mobil"
 
 #: templates/options-tab7.inc.php:17
 msgid "Mobile options are not yet supported for PhotoSwipe 5."
-msgstr ""
+msgstr "Mobil seçenekler PhotoSwipe 5 için henüz desteklenmiyor."
 
 #: templates/options-tab6.inc.php:16
 msgid "Mouse wheel function"
-msgstr ""
+msgstr "Fare tekerleği işlevi"
 
 #: templates/options-tab6.inc.php:47
 msgid "never hide automatically"
-msgstr ""
+msgstr "asla otomatik gizleme"
 
 #: templates/options-tab3.inc.php:18
 msgid "New share symbol"
-msgstr ""
+msgstr "Yeni paylaş simgesi"
 
 #: templates/options-tab3.inc.php:19
 msgid "New share symbol with solid background"
-msgstr ""
+msgstr "Düz arka planlı yeni paylaş simgesi"
 
 #: templates/frontend.inc.php:29
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1055
 msgid "Next [→]"
-msgstr ""
+msgstr "Sonraki [→]"
 
 #: templates/options-tab3.inc.php:61
 msgid ""
 "Opacity of the background for the lightbox (values below 100% may not work "
 "well with some caption styles)."
 msgstr ""
+"Lightbox arka planının opaklığı (%100'ün altındaki değerler bazı altyazı "
+"stilleriyle iyi çalışmayabilir)."
 
 #: templates/options-tab3.inc.php:16
 msgid "Original"
-msgstr ""
+msgstr "Orijinal"
 
 #: templates/options-tab3.inc.php:17
 msgid "Original with solid background"
-msgstr ""
+msgstr "Düz arka planlı orijinal"
 
 #: templates/options-tab2.inc.php:44
 msgid "Other options"
-msgstr ""
+msgstr "Diğer seçenekler"
 
 #: templates/options-tab4.inc.php:38
 msgid "overlay"
-msgstr ""
+msgstr "kaplama"
 
 #: templates/options-tab3.inc.php:73
 msgid "Padding around the image in px."
-msgstr ""
+msgstr "Resmin etrafındaki iç boşluk (px cinsinden)."
 
 #: templates/options-tab2.inc.php:4
 msgid "PhotoSwipe version to use"
-msgstr ""
+msgstr "Kullanılacak PhotoSwipe sürümü"
 
 #: templates/options-tab1.inc.php:3
 msgid "PHP version"
-msgstr ""
+msgstr "PHP sürümü"
 
 #: templates/options-tab5.inc.php:12
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1049
 msgid "Pin it"
-msgstr ""
+msgstr "Pin it"
 
 #: templates/options-tab1.inc.php:24
 msgid "pixels"
-msgstr ""
+msgstr "piksel"
 
 #: templates/options-tab5.inc.php:32
 msgid ""
@@ -414,115 +466,122 @@ msgid ""
 "&ndash;&nbsp;encoded URL of the image<br />{{text}}&nbsp;&ndash;&nbsp;image "
 "caption."
 msgstr ""
+"Bağlantı için yer tutucular:<br />{{raw_url}}&nbsp;&ndash;&nbsp;lightbox "
+"URL'si<br />{{url}}&nbsp;&ndash;&nbsp;kodlanmış lightbox URL'si<br />"
+"{{raw_image_url}}&nbsp;&ndash;&nbsp;resmin URL'si<br />{{image_url}}&nbsp;"
+"&ndash;&nbsp;resmin kodlanmış URL'si<br />{{text}}&nbsp;&ndash;&nbsp;resim "
+"altyazısı."
 
 #: templates/options-tab1.inc.php:2
 msgid "Plugin version"
-msgstr ""
+msgstr "Eklenti sürümü"
 
 #: templates/options-tab2.inc.php:95
 msgid "Prefix"
-msgstr ""
+msgstr "Ön ek"
 
 #: templates/frontend.inc.php:28
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1054
 msgid "Previous [←]"
-msgstr ""
+msgstr "Önceki [←]"
 
 #: templates/options-tab2.inc.php:95
 msgid "Pull"
-msgstr ""
+msgstr "Çekme"
 
 #: templates/options-tab3.inc.php:71
 msgid "right"
-msgstr ""
+msgstr "sağ"
 
 #: templates/options-tab6.inc.php:29
 msgid "Scroll zoomed image or close lightbox if not zoomed"
 msgstr ""
+"Yakınlaştırılmış resmi kaydır veya yakınlaştırılmamışsa lightbox'ı kapat"
 
 #: templates/options-tab6.inc.php:28
 msgid "Scroll zoomed image otherwise do nothing"
-msgstr ""
+msgstr "Yakınlaştırılmış resmi kaydır, aksi halde hiçbir şey yapma"
 
 #: templates/options-tab6.inc.php:53
 msgid "second"
 msgid_plural "seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "saniye"
 
 #: templates/options-navigation.inc.php:1
 msgid "Secondary menu"
-msgstr ""
+msgstr "İkincil menü"
 
 #: templates/frontend.inc.php:13
 msgid "Share"
-msgstr ""
+msgstr "Paylaş"
 
 #: templates/options-tab5.inc.php:9
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1047
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Facebook'ta paylaş"
 
 #: templates/options-navigation.inc.php:6
 msgid "Sharing"
-msgstr ""
+msgstr "Paylaşım"
 
 #: templates/options-tab5.inc.php:38
 msgid "Sharing options are not yet supported for PhotoSwipe 5."
-msgstr ""
+msgstr "Paylaşım seçenekleri PhotoSwipe 5 için henüz desteklenmiyor."
 
 #: templates/options-tab4.inc.php:7
 msgid "Show caption if available"
-msgstr ""
+msgstr "Varsa altyazıyı göster"
 
 #: templates/options-tab4.inc.php:30
 msgid "Show date if available"
-msgstr ""
+msgstr "Varsa tarihi göster"
 
 #: templates/options-tab2.inc.php:37
 msgid "Show download button"
-msgstr ""
+msgstr "İndirme düğmesini göster"
 
 #: templates/options-tab4.inc.php:28
 msgid "Show EXIF information if available"
-msgstr ""
+msgstr "Varsa EXIF bilgisini göster"
 
 #: templates/options-tab2.inc.php:36
 msgid "Show fullscreen button"
-msgstr ""
+msgstr "Tam ekran düğmesini göster"
 
 #: templates/options-tab4.inc.php:29
 msgid "Show lens name if available"
-msgstr ""
+msgstr "Varsa lens adını göster"
 
 #: templates/options-tab2.inc.php:38
 msgid "Show picture counter"
-msgstr ""
+msgstr "Resim sayacını göster"
 
 #: templates/options-tab2.inc.php:18
 msgid "Show this setting as checkbox in page/post editor"
-msgstr ""
+msgstr "Bu ayarı sayfa/yazı düzenleyicisinde onay kutusu olarak göster"
 
 #: templates/options-tab2.inc.php:49
 msgid ""
 "Show WordPress galleries and Gutenberg gallery blocks in separate lightboxes"
 msgstr ""
+"WordPress galerilerini ve Gutenberg galeri bloklarını ayrı lightbox'larda "
+"göster"
 
 #: templates/options-tab2.inc.php:39
 msgid "Show zoom button if available"
-msgstr ""
+msgstr "Varsa yakınlaştırma düğmesini göster"
 
 #: templates/options-tab3.inc.php:4
 msgid "Skin"
-msgstr ""
+msgstr "Görünüm"
 
 #: templates/options-tab3.inc.php:42
 msgid "Space between pictures relative to screenwidth."
-msgstr ""
+msgstr "Resimler arasındaki boşluk, ekran genişliğine göre."
 
 #: templates/options-tab3.inc.php:28
 msgid "Spacing between pictures"
-msgstr ""
+msgstr "Resimler arasındaki boşluk"
 
 #: templates/options-tab2.inc.php:56
 msgid ""
@@ -530,28 +589,32 @@ msgid ""
 "on-single-site/\" target=\"_blank\">Multiple Domain Mapping on Single "
 "Site</a>"
 msgstr ""
+"<a href=\"https://wordpress.org/plugins/multiple-domain-mapping-on-single-"
+"site/\" target=\"_blank\">Tek Sitede Çoklu Alan Adı Eşleme</a> desteği"
 
 #: templates/options-tab2.inc.php:62
 msgid "SVG scaling factor"
-msgstr ""
+msgstr "SVG ölçekleme faktörü"
 
 #: templates/options-tab6.inc.php:31
 msgid "Switch to next/previous picture"
-msgstr ""
+msgstr "Sonraki/önceki resme geç"
 
 #: templates/options-tab1.inc.php:19
 msgid "Thank you :-)"
-msgstr ""
+msgstr "Teşekkürler :-)"
 
 #: templates/options-tab2.inc.php:8
 msgid ""
 "The available options depend on the PhotoSwipe version. UI customizations "
 "done for version 4 may not work for version 5."
 msgstr ""
+"Mevcut seçenekler PhotoSwipe sürümüne bağlıdır. Sürüm 4 için yapılan arayüz "
+"özelleştirmeleri sürüm 5'te çalışmayabilir."
 
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1056
 msgid "The image cannot be loaded"
-msgstr ""
+msgstr "Resim yüklenemiyor"
 
 #. %d value for image size
 #: templates/options-tab1.inc.php:29
@@ -559,10 +622,12 @@ msgid ""
 "The smallest size (%d×%d pixels) will be used to check if a smaller image is "
 "available for the transition."
 msgstr ""
+"En küçük boyut (%d×%d piksel), geçiş için daha küçük bir resmin mevcut olup "
+"olmadığını kontrol etmek için kullanılacaktır."
 
 #: templates/options-navigation.inc.php:4
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: templates/options-tab1.inc.php:16
 msgid ""
@@ -572,68 +637,78 @@ msgid ""
 "no other lightbox is in use (some themes or gallery plugins bring their own "
 "lightbox which needs to be disabled)."
 msgstr ""
+"Bu eklenti, genişletilmiş bir PhotoSwipe sürümüne dayalı olarak tüm "
+"bağlantılı resimleri bir lightbox'ta gösterir. Lightbox açılmıyorsa, "
+"resimlerin medya dosyasına bağlantı verdiğinden ve ek sayfasına bağlantı "
+"vermediğinden emin olun. Ayrıca başka bir lightbox kullanılmadığından emin "
+"olun (bazı temalar veya galeri eklentileri, devre dışı bırakılması gereken "
+"kendi lightbox'larını getirir)."
 
 #: templates/options-tab6.inc.php:61
 msgid ""
 "Time until the on screen controls will disappear automatically in desktop "
 "view. Note: Keeping controls visible is only supported with PhotoSwipe 5."
 msgstr ""
+"Ekran kontrollerinin masaüstü görünümünde otomatik olarak kaybolacağı süre. "
+"Not: Kontrolleri görünür tutmak yalnızca PhotoSwipe 5 ile desteklenir."
 
 #: templates/options-tab4.inc.php:16
 msgid "Title"
-msgstr ""
+msgstr "Başlık"
 
 #: templates/frontend.inc.php:14
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1057
 msgid "Toggle fullscreen [F]"
-msgstr ""
+msgstr "Tam ekranı aç/kapat [F]"
 
 #: templates/options-tab3.inc.php:70
 msgid "top"
-msgstr ""
+msgstr "üst"
 
 #: templates/options-tab5.inc.php:10
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1048
 msgid "Tweet"
-msgstr ""
+msgstr "Tweet"
 
 #: templates/options-tab4.inc.php:35
 msgid "Type of caption"
-msgstr ""
+msgstr "Altyazı türü"
 
 #: templates/options-tab2.inc.php:47
 msgid ""
 "Update browser history (going back in the browser will first close the "
 "lightbox)"
 msgstr ""
+"Tarayıcı geçmişini güncelle (tarayıcıda geri gitmek önce lightbox'ı kapatır)"
 
 #: templates/options-tab6.inc.php:10
 msgid "Use slide animation when switching images in desktop view"
 msgstr ""
+"Masaüstü görünümünde resimler arasında geçiş yaparken slayt animasyonu kullan"
 
 #: templates/options-tab5.inc.php:11
 msgid "Use URL of images instead of lightbox on Facebook and Twitter"
-msgstr ""
+msgstr "Facebook ve Twitter'da lightbox yerine resimlerin URL'sini kullan"
 
 #: templates/options-tab4.inc.php:13
 msgid "Used elements"
-msgstr ""
+msgstr "Kullanılan öğeler"
 
 #: templates/options-tab2.inc.php:7
 msgid "version 4"
-msgstr ""
+msgstr "sürüm 4"
 
 #: templates/options-tab2.inc.php:7
 msgid "version 5"
-msgstr ""
+msgstr "sürüm 5"
 
 #: templates/options-tab2.inc.php:33
 msgid "Visible elements"
-msgstr ""
+msgstr "Görünür öğeler"
 
 #: templates/options-tab5.inc.php:6
 msgid "Visible sharing options"
-msgstr ""
+msgstr "Görünür paylaşım seçenekleri"
 
 #: templates/options-tab1.inc.php:8
 msgid ""
@@ -641,26 +716,36 @@ msgid ""
 "security risk and either WordPress or this plugin may not work correctly "
 "with it. Please upgrade PHP or ask your hoster to do so!"
 msgstr ""
+"Uyarı! Çok eski bir PHP sürümü kullanıyorsunuz (7.4'ten eski)! Bu bir "
+"güvenlik riskidir ve WordPress veya bu eklenti onunla düzgün çalışmayabilir. "
+"Lütfen PHP'yi yükseltin veya barındırma sağlayıcınızdan yükseltmesini "
+"isteyin!"
 
 #: templates/options-tab1.inc.php:12
 #, php-format
+#| msgid ""
+#| "Warning! Your PHP is outdated (older than 8.1)! This may be a security "
+#| "risk! Please upgrade PHP or ask your hoster to do so!"
 msgid ""
 "Warning! Your PHP is outdated (older than %s)! This may be a security risk! "
 "Please upgrade PHP or ask your hoster to do so!"
 msgstr ""
+"Uyarı! PHP sürümünüz güncel değil (%s'den eski)! Bu bir güvenlik riski "
+"olabilir! Lütfen PHP'yi yükseltin veya barındırma sağlayıcınızdan "
+"yükseltmesini isteyin!"
 
 #: templates/options-tab3.inc.php:81
 msgid "width"
-msgstr ""
+msgstr "genişlik"
 
 #: templates/options-tab5.inc.php:23
 msgid "Your label here"
-msgstr ""
+msgstr "Etiketiniz buraya"
 
 #: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1053
 msgid "Zoom"
-msgstr ""
+msgstr "Yakınlaştır"
 
 #: templates/frontend.inc.php:15 templates/options-tab6.inc.php:30
 msgid "Zoom in/out"
-msgstr ""
+msgstr "Yakınlaştır/uzaklaştır"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Lightbox with PhotoSwipe\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-13 09:32+0000\n"
-"PO-Revision-Date: 2025-12-02 22:24+0000\n"
+"PO-Revision-Date: 2026-02-26 08:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
@@ -95,7 +95,7 @@ msgstr ""
 "mode."
 
 #: templates/frontend.inc.php:12
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1048
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1052
 #| msgid "Close (Esc)"
 msgid "Close [Esc]"
 msgstr "Fermer [Esc]"
@@ -109,7 +109,7 @@ msgid "Close with vertical drag in mobile view"
 msgstr "Fermer avec un glissement vertical en vue mobile"
 
 #: templates/options-tab5.inc.php:14
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1047
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1051
 msgid "Copy image URL"
 msgstr "Copier l'URL de l'image"
 
@@ -125,8 +125,8 @@ msgstr "Lien personnalisé, étiquette"
 msgid "Custom link, URL"
 msgstr "Lien personnalisé, URL"
 
-#: templates/options-tab6.inc.php:55 templates/options-tab3.inc.php:37
-#: templates/options-tab3.inc.php:56 templates/options-tab2.inc.php:71
+#: templates/options-tab2.inc.php:71 templates/options-tab6.inc.php:55
+#: templates/options-tab3.inc.php:37 templates/options-tab3.inc.php:56
 msgid "Default"
 msgstr "Défaut"
 
@@ -138,13 +138,13 @@ msgstr "La description"
 msgid "Desktop"
 msgstr "Bureau"
 
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:794
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:798
 msgid "Disable"
 msgstr "Désactiver"
 
 #: templates/options-tab5.inc.php:13
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1046
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1054
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1050
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1058
 msgid "Download image"
 msgstr "Télécharger l'image"
 
@@ -275,8 +275,8 @@ msgstr ""
 msgid "Full picture size in desktop view"
 msgstr "Taille complète de l'image en mode bureau"
 
-#: templates/options-tab4.inc.php:4 templates/options-navigation.inc.php:3
-#: templates/options-tab6.inc.php:6 templates/options-tab7.inc.php:6
+#: templates/options-navigation.inc.php:3 templates/options-tab7.inc.php:6
+#: templates/options-tab6.inc.php:6 templates/options-tab4.inc.php:4
 msgid "General"
 msgstr "Général"
 
@@ -381,9 +381,9 @@ msgstr "en haut"
 #. Name of the plugin
 #. Description of the plugin
 #: templates/options.inc.php:12
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:741
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:742
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:774
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:745
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:746
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:778
 msgid "Lightbox with PhotoSwipe"
 msgstr "Lightbox avec PhotoSwipe"
 
@@ -429,7 +429,7 @@ msgid "New share symbol with solid background"
 msgstr "Nouveau symbole d'action avec fond uni"
 
 #: templates/frontend.inc.php:29
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1051
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1055
 msgid "Next [→]"
 msgstr "Suivant [→]"
 
@@ -471,7 +471,7 @@ msgid "PHP version"
 msgstr "Version PHP"
 
 #: templates/options-tab5.inc.php:12
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1045
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1049
 msgid "Pin it"
 msgstr "Épinglez-le"
 
@@ -501,7 +501,7 @@ msgid "Prefix"
 msgstr "Préfixe"
 
 #: templates/frontend.inc.php:28
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1050
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1054
 msgid "Previous [←]"
 msgstr "Précédent [←]"
 
@@ -538,7 +538,7 @@ msgid "Share"
 msgstr "Partager"
 
 #: templates/options-tab5.inc.php:9
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1043
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1047
 msgid "Share on Facebook"
 msgstr "Partager sur Facebook"
 
@@ -640,7 +640,7 @@ msgstr ""
 "personnalisations de l'interface utilisateur effectuées pour la version 4 "
 "peuvent ne pas fonctionner pour la version 5."
 
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1052
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1056
 msgid "The image cannot be loaded"
 msgstr "L'image ne peut pas être chargée"
 
@@ -692,7 +692,7 @@ msgid "Title"
 msgstr "Titre"
 
 #: templates/frontend.inc.php:14
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1053
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1057
 #| msgid "Toggle fullscreen"
 msgid "Toggle fullscreen [F]"
 msgstr "Passer en plein écran [F]"
@@ -702,7 +702,7 @@ msgid "top"
 msgstr "à gauche"
 
 #: templates/options-tab5.inc.php:10
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1044
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1048
 msgid "Tweet"
 msgstr "Tweet"
 
@@ -761,14 +761,15 @@ msgstr ""
 "PHP ou demander à votre hébergeur de le faire !"
 
 #: templates/options-tab1.inc.php:12
+#, php-format
 #| msgid ""
-#| "Warning! Your PHP is outdated (older than 8.0)! This may be a security "
+#| "Warning! Your PHP is outdated (older than 8.1)! This may be a security "
 #| "risk! Please upgrade PHP or ask your hoster to do so!"
 msgid ""
-"Warning! Your PHP is outdated (older than 8.1)! This may be a security risk! "
+"Warning! Your PHP is outdated (older than %s)! This may be a security risk! "
 "Please upgrade PHP or ask your hoster to do so!"
 msgstr ""
-"Avertissement! Votre PHP est obsolète (plus ancien que 8.1) ! Cela peut être "
+"Avertissement! Votre PHP est obsolète (plus ancien que %s) ! Cela peut être "
 "un risque pour la sécurité ! Veuillez mettre à niveau PHP ou demander à "
 "votre hébergeur de le faire !"
 
@@ -780,7 +781,7 @@ msgstr "largeur"
 msgid "Your label here"
 msgstr "Votre étiquette ici"
 
-#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1049
+#: src/LightboxPhotoSwipe/LightboxPhotoSwipe.php:1053
 msgid "Zoom"
 msgstr "Zoom"
 

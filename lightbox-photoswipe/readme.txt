@@ -4,7 +4,7 @@ Contributors: awelzel
 Tags: lightbox, photoswipe, attachments, images, gallery
 Requires at least: 5.3
 Tested up to: 6.9
-Stable tag: 5.8.2
+Stable tag: 5.8.3
 Donate link: https://paypal.me/ArnoWelzel
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -156,6 +156,11 @@ The main repository for the source code can be found at [https://codeberg.org/as
 5. Desktop options in the backend
 
 == Changelog ==
+
+= 5.8.3 =
+
+* Added Turkish translation.
+* Changed PHP version warning to version 8.2 as minimum preferred version.
 
 = 5.8.2 =
 

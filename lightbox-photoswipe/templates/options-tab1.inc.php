@@ -7,9 +7,9 @@ if(PHP_VERSION_ID < 70400) {
 ?>
     <p class="lbwps_text"><?php echo __('Warning! You are using a very old version of PHP (older than 7.4)! This is a security risk and either WordPress or this plugin may not work correctly with it. Please upgrade PHP or ask your hoster to do so!', 'lightbox-photoswipe'); ?></p>
 <?php
-} else if(PHP_VERSION_ID < 80100) {
+} else if(PHP_VERSION_ID < self::PHP_MINIMUM_VERSION) {
 ?>
-    <p class="lbwps_text"><?php echo __('Warning! Your PHP is outdated (older than 8.1)! This may be a security risk! Please upgrade PHP or ask your hoster to do so!', 'lightbox-photoswipe'); ?></p>
+    <p class="lbwps_text"><?php echo sprintf(__('Warning! Your PHP is outdated (older than %s)! This may be a security risk! Please upgrade PHP or ask your hoster to do so!', 'lightbox-photoswipe'), self::PHP_MINIMUM_VERSION_DISPLAY); ?></p>
 <?php
 }
 ?>
