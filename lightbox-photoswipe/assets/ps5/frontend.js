@@ -209,7 +209,15 @@ let lbwpsInit = function(domUpdate) {
                     title = title + '<div class="pswp__caption__text">' + caption + '</div>';
                 }
 
-                if (lbwpsOptions.use_alt === '1' && element.firstElementChild && element.firstElementChild.getAttribute('alt')) {
+                let alt = '';
+                if (element.firstElementChild) {
+                    alt = element.firstElementChild.getAttribute('alt');
+                    if (!alt) {
+                        alt = '';
+                    }
+                }
+
+                if (lbwpsOptions.use_alt === '1' && alt !== '') {
                     title = title + '<div class="pswp__caption__alt">' + element.firstElementChild.getAttribute('alt') + '</div>';
                 }
 
@@ -231,6 +239,10 @@ let lbwpsInit = function(domUpdate) {
                     exif = '';
                 }
 
+                if (alt === '') {
+                    alt = caption;
+                }
+
                 galleryItems.push({
                     src: element.getAttribute('href'),
                     msrc: msrc,
@@ -239,7 +251,8 @@ let lbwpsInit = function(domUpdate) {
                     title: title,
                     exif: exif,
                     el: element,
-                    tabindex: tabindex
+                    tabindex: tabindex,
+                    alt: alt
                 });
             }
         }
