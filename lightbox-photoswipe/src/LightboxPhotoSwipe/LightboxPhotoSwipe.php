@@ -8,13 +8,14 @@ include_once ABSPATH . 'wp-admin/includes/plugin.php';
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.8.3';
+    const VERSION = '5.8.5';
     const SLUG = 'lightbox-photoswipe';
     const META_VERSION = '22';
     const CACHE_EXPIRE_IMG_DETAILS = 86400;
     const DB_VERSION = 36;
     const BASEPATH = WP_PLUGIN_DIR.'/'.self::SLUG.'/';
     const SUPPORTED_FORMATS = ['jpg', 'jpeg', 'jpe', 'gif', 'png', 'bmp', 'tif', 'tiff', 'ico', 'webp', 'svg', 'avif'];
+    const SUPPORTED_FORMATS_EXIF = ['jpg', 'jpeg', 'jpe', 'tif', 'tiff'];
 
     const PHP_MINIMUM_VERSION = 80200;
 
@@ -575,7 +576,7 @@ class LightboxPhotoSwipe
                         'exifDateTime'    => '',
                         'exifOrientation' => '',
                     ];
-                    if (in_array($extension, ['jpg', 'jpeg', 'jpe', 'tif', 'tiff', 'webp'])) {
+                    if (in_array($extension, self::SUPPORTED_FORMATS_EXIF)) {
                         if ($this->exifHelper->readExifDataFromFile($file.$params, $extension)) {
                             $imgDetails['exifCamera']   = $this->exifHelper->getCamera();
                             $imgDetails['exifLens']     = $this->exifHelper->getLens();
