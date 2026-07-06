@@ -8,7 +8,7 @@ include_once ABSPATH . 'wp-admin/includes/plugin.php';
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.8.5';
+    const VERSION = '5.8.6';
     const SLUG = 'lightbox-photoswipe';
     const META_VERSION = '22';
     const CACHE_EXPIRE_IMG_DETAILS = 86400;
@@ -534,6 +534,10 @@ class LightboxPhotoSwipe
                         for ($n=-1; $n<2; $n++) {
                             if ($imageSize[0] > $imageSize[1]) {
                                 // portrait
+                                if (!isset($this->imageSizes[0]['width'])) {
+                                    // skip this test if no smaller image width is available
+                                    continue;
+                                }
                                 $fileSmallTest = sprintf(
                                     '%s/%s-%dx%d.%s',
                                     $pathInfo['dirname'],
@@ -544,6 +548,10 @@ class LightboxPhotoSwipe
                                 );
                             } else {
                                 // landscape
+                                if (!isset($this->imageSizes[0]['height'])) {
+                                    // skip this test if no smaller image height is available
+                                    continue;
+                                }
                                 $fileSmallTest = sprintf(
                                     '%s/%s-%dx%d.%s',
                                     $pathInfo['dirname'],
