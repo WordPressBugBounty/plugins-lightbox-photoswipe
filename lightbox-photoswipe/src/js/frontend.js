@@ -118,6 +118,14 @@ let lbwpsInit = function(domUpdate) {
         document.body.style.overflow = originalBodyOverflow;
     };
 
+    let sanitizeCaption = function (caption) {
+        const regexp = /(?:(?!(<br>)|(<br \/>)|(<b>)|(<\/b>)|(<i>)|(<\/i>)|(<em>)|(<\/em>)|(<strong>)|(<\/strong>)|(<div>)|(<div style="([^"]+)">)|(<div class="([^"]+)">)|(<\/div>))(<[^>]+>))*/gi;
+        if (typeof caption === 'string' || caption instanceof String) {
+            return caption.replaceAll(regexp, '');
+        }
+        return caption;
+    }
+
     let parseThumbnailElements = function (link, id) {
         let elements,
             galleryItems = [],
@@ -198,23 +206,23 @@ let lbwpsInit = function(domUpdate) {
                 title = '';
 
                 if (element.getAttribute('data-lbwps-title') != null) {
-                    title = title + '<div class="pswp__caption__title">' + element.getAttribute('data-lbwps-title') + '</div>';
+                    title = title + '<div class="pswp__caption__title">' + sanitizeCaption(element.getAttribute('data-lbwps-title')) + '</div>';
                 }
 
                 if (lbwpsOptions.usecaption === '1' && caption != null) {
-                    title = title + '<div class="pswp__caption__text">' + caption + '</div>';
+                    title = title + '<div class="pswp__caption__text">' + sanitizeCaption(caption) + '</div>';
                 }
 
                 if (lbwpsOptions.use_alt === '1' && element.firstElementChild && element.firstElementChild.getAttribute('alt')) {
-                    title = title + '<div class="pswp__caption__alt">' + element.firstElementChild.getAttribute('alt') + '</div>';
+                    title = title + '<div class="pswp__caption__alt">' + sanitizeCaption(element.firstElementChild.getAttribute('alt')) + '</div>';
                 }
 
                 if (element.getAttribute('data-lbwps-description') != null) {
-                    title = title + '<div class="pswp__caption__desc">' + element.getAttribute('data-lbwps-description') + '</div>';
+                    title = title + '<div class="pswp__caption__desc">' + sanitizeCaption(element.getAttribute('data-lbwps-description')) + '</div>';
                 }
 
                 if (element.getAttribute('data-lbwps-filename') != null) {
-                    title = title + '<div class="pswp__caption__file">' + element.getAttribute('data-lbwps-filename') + '</div>';
+                    title = title + '<div class="pswp__caption__file">' + sanitizeCaption(element.getAttribute('data-lbwps-filename')) + '</div>';
                 }
 
                 let msrc = element.getAttribute('href');
@@ -222,13 +230,19 @@ let lbwpsInit = function(domUpdate) {
                     msrc = element.getAttribute('data-lbwps-srcsmall');
                 }
 
+                let exif = element.getAttribute('data-lbwps-exif');
+                if (!exif) {
+                    exif = '';
+                }
+                exif = sanitizeCaption(exif);
+
                 galleryItems.push({
                     src: element.getAttribute('href'),
                     msrc: msrc,
                     w: element.getAttribute('data-lbwps-width'),
                     h: element.getAttribute('data-lbwps-height'),
                     title: title,
-                    exif: element.getAttribute('data-lbwps-exif'),
+                    exif: exif,
                     getThumbBoundsFn: false,
                     showHideOpacity: true,
                     el: element,

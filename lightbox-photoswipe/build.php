@@ -1,7 +1,7 @@
-#!/usr/bin/php
 <?php
-
 namespace LightboxPhotoSwipe;
+
+defined('ABSPATH') or die();
 
 use MatthiasMullie\Minify;
 
@@ -66,9 +66,8 @@ class Build
         // Combine all styles for each skine to one minifed file which includes all images as data URIs
 
         $sourcePhotoswipe = file_get_contents('src/lib/photoswipe.css');
+        echo sprintf("Building styles for PhotoSwipe 4\n");
         foreach (['classic', 'classic-solid', 'default', 'default-solid'] as $skin) {
-            echo sprintf("Building style for PhotoSwipe 4 skin %s\n", $skin);
-
             $minifyCss = new Minify\CSS();
             $source = $sourcePhotoswipe.file_get_contents(sprintf('src/lib/skins/%s/skin.css', $skin));
             $matches = [];

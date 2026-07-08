@@ -1,3 +1,3 @@
 .PHONY: build
 build:
-	/usr/bin/php build.php
+	/usr/bin/php -r 'define("ABSPATH", null); include("build.php");'

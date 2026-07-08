@@ -1,4 +1,6 @@
 <?php
+defined('ABSPATH') or die();
+
 /**
  * Functions to get EXIF data from images
  */

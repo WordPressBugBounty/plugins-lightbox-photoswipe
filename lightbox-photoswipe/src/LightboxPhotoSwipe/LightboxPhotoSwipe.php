@@ -61,7 +61,6 @@ class LightboxPhotoSwipe
         $this->obLevel = 0;
 
         if (!is_admin()) {
-            add_filter('script_loader_tag', [$this,'addScriptModule'] , 10, 3);
             add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
             add_action('wp_footer', [$this, 'outputFooter']);
             add_action('wp_head', [$this, 'bufferStart'], 2050);
@@ -112,18 +111,6 @@ class LightboxPhotoSwipe
     }
 
     /**
-     * Add module attribute to PhotoSwipe 5 script
-     */
-    function addScriptModule($tag, $handle, $src)
-    {
-        if ( 'lbwps-photoswipe5' !== $handle ) {
-            return $tag;
-        }
-        $tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
-        return $tag;
-    }
-
-    /**
      * Enqueue Scripts/CSS
      */
     public function enqueueScripts()
@@ -144,14 +131,12 @@ class LightboxPhotoSwipe
 
         $version = apply_filters('lbwps_version', $this->optionsManager->getOption('version'), get_the_ID());
         if (5 === (int)$version) {
-            $handle = 'lbwps-photoswipe5';
             if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) {
-                wp_enqueue_script(
+                wp_enqueue_script_module(
                     'lbwps-photoswipe5',
                     sprintf('%sassets/ps5/frontend.js', $this->getPluginUrl()),
                     [],
-                    self::VERSION,
-                    true
+                    self::VERSION
                 );
                 wp_enqueue_style(
                     'lbwps-styles-photoswipe5-local',
@@ -169,12 +154,11 @@ class LightboxPhotoSwipe
                     self::VERSION
                 );
             } else {
-                wp_enqueue_script(
+                wp_enqueue_script_module(
                     'lbwps-photoswipe5',
                     sprintf('%sassets/ps5/frontend.min.js', $this->getPluginUrl()),
                     [],
-                    self::VERSION,
-                    true
+                    self::VERSION
                 );
                 wp_enqueue_style(
                     'lbwps-styles-photoswipe5-main',
@@ -184,36 +168,31 @@ class LightboxPhotoSwipe
                 );
             }
         } else {
-            $handle = 'lbwps';
             if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) {
                 wp_enqueue_script(
                     'lbwps-photoswipe',
                     sprintf('%ssrc/lib/photoswipe.js', $this->getPluginUrl()),
                     [],
-                    self::VERSION,
-                    true
+                    self::VERSION
                 );
                 wp_enqueue_script(
                     'lbwps-photoswipe-ui',
                     sprintf('%ssrc/lib/photoswipe-ui-default.js', $this->getPluginUrl()),
                     [],
-                    self::VERSION,
-                    true
+                    self::VERSION
                 );
                 wp_enqueue_script(
                     'lbwps',
                     sprintf('%ssrc/js/frontend.js', $this->getPluginUrl()),
                     [],
-                    self::VERSION,
-                    true
+                    self::VERSION
                 );
             } else {
                 wp_enqueue_script(
                     'lbwps',
                     sprintf('%sassets/ps4/scripts.js', $this->getPluginUrl()),
                     [],
-                    self::VERSION,
-                    true
+                    self::VERSION
                 );
             }
             switch ($this->optionsManager->getOption('skin')) {
@@ -252,7 +231,7 @@ class LightboxPhotoSwipe
                 );
             }
         }
-        $this->enqueueFrontendOptions($handle);
+        $this->enqueueFrontendOptions();
     }
 
     /**
@@ -271,6 +250,7 @@ class LightboxPhotoSwipe
             $footer = ob_get_clean();
 
             $footer = apply_filters('lbwps_markup', $footer);
+            /* This must not be escaped, since the content is HTML */
             echo $footer;
         }
 
@@ -642,7 +622,8 @@ class LightboxPhotoSwipe
                 }
                 if ('1' === $this->optionsManager->getOption('usecaption') && $captionCaption != '') {
                     $captionCaption = apply_filters('lbwps_caption_caption', $captionCaption, $id);
-                    $attr .= sprintf(' data-lbwps-caption="%s"', htmlspecialchars(nl2br(wptexturize($captionCaption))));
+                    $captionCaption = htmlspecialchars(nl2br(wptexturize($captionCaption)));
+                    $attr .= sprintf(' data-lbwps-caption="%s"', $captionCaption);
                 }
                 if ('1' === $this->optionsManager->getOption('usetitle') && '' !== $captionTitle) {
                     $captionTitle = apply_filters('lbwps_caption_title', $captionTitle, $id);
@@ -803,8 +784,8 @@ class LightboxPhotoSwipe
         if (in_array($post->ID, $this->optionsManager->getOption('disabled_post_ids'))) {
             $checked = 'checked="checked" ';
         }
-        echo '<label for="lbwps_disabled"><input type="checkbox" id="lbwps_disabled" name="lbwps_disabled" value="1"'.$checked.'/>';
-        echo __('Disable', 'lightbox-photoswipe').'</label>';
+        echo '<label for="lbwps_disabled"><input type="checkbox" id="lbwps_disabled" name="lbwps_disabled" value="1"'.esc_html($checked).'/>';
+        echo esc_html__('Disable', 'lightbox-photoswipe').'</label>';
     }
 
     /**
@@ -815,7 +796,7 @@ class LightboxPhotoSwipe
         // Only save options if this is not an autosave
         $is_autosave = wp_is_post_autosave($postId);
         $is_revision = wp_is_post_revision($postId);
-        $is_valid_nonce = (isset($_POST['lbwps_nonce']) && wp_verify_nonce($_POST['lbwps_nonce' ], basename(__FILE__)))?'true':'false';
+        $is_valid_nonce = (isset($_POST['lbwps_nonce']) && wp_verify_nonce(wp_unslash($_POST['lbwps_nonce']), basename(__FILE__)))?'true':'false';
 
         if ($is_autosave || $is_revision || !$is_valid_nonce ) {
             return;
@@ -871,22 +852,10 @@ class LightboxPhotoSwipe
         if (intval($dbVersion) < 10) {
             $this->onActivate();
         }
-        if (intval($dbVersion) < 22) {
-            $this->deleteDatabaseTables();
-        }
-        if (intval($dbVersion) < 34) {
-            // We don't use table based caching and don't need a cleanup job any longer
-            delete_option('lightbox_photoswipe_use_cache');
-            wp_clear_scheduled_hook('lbwps_cleanup');
-            $table_name = $wpdb->prefix.'lightbox_photoswipe_img';
-            $sql = "DROP TABLE IF EXISTS $table_name";
-            $wpdb->query($sql);
-        }
         if (intval($dbVersion) < 36) {
             delete_option('lightbox_photoswipe_add_lazyloading');
         }
         if ((int)$dbVersion !== self::DB_VERSION) {
-            $this->cleanupTwigCache();
             $this->optionsManager->setOption('db_version', self::DB_VERSION, true);
         }
 
@@ -895,8 +864,6 @@ class LightboxPhotoSwipe
 
     /**
      * Cleanup when uninstalling the plugin
-     *
-     * @return void
      */
     function uninstallPluginData()
     {
@@ -997,10 +964,9 @@ class LightboxPhotoSwipe
     /**
      * Output group of radio controls with custom separator in the admin page
      */
-    public function uiControlRadio($name, $optionValues, $optionLabels, $separator)
+    public function uiControlRadio($name, $optionValues, $optionLabels, $separatorType)
     {
         $value = $this->optionsManager->getOption($name);
-        $output = '';
         $num = 0;
         while ($num < count($optionValues)) {
             if (isset($optionLabels[$num]) && $optionLabels[$num] != null) {
@@ -1008,49 +974,31 @@ class LightboxPhotoSwipe
             } else {
                 $label = '';
             }
-            $output .= sprintf(
+            echo sprintf(
                 '<label style="margin-right:0.5em"><input id="%1$s-%2$d" type="radio" name="%1$s" value="%3$s"%4$s/>%5$s</label>%6$s',
                 esc_attr('lightbox_photoswipe_'.$name),
-                $num,
-                $optionValues[$num],
-                $value === $optionValues[$num] ? ' checked' : '',
-                $label,
-                $separator
+                esc_attr($num),
+                esc_attr($optionValues[$num]),
+                $value === esc_attr($optionValues[$num]) ? ' checked' : '',
+                esc_html($label),
+                $separatorType == '<br>' ? '<br>' : ' '
             );
             $num++;
         }
-
-        echo $output;
     }
 
     /**
      * Output all available post types as comma separated text
-     *
-     * @return string
      */
     public function uiGetPostTypes()
     {
-        echo _wp_specialchars(implode(', ', get_post_types()));
-    }
-
-    /**
-     * Make sure the old caching tables are removed when uninstalling the plugin
-     *
-     * @return void
-     */
-    protected function deleteDatabaseTables()
-    {
-        global $wpdb;
-
-        $table_name = $wpdb->prefix . 'lightbox_photoswipe_img';
-        $sql = "DROP TABLE IF EXISTS $table_name";
-        $wpdb->query($sql);
+        echo esc_html(implode(', ', get_post_types()));
     }
 
     /**
      * Enqueue options for frontend script
      */
-    protected function enqueueFrontendOptions($handle)
+    protected function enqueueFrontendOptions()
     {
         $translation_array = [
             'label_facebook' => __('Share on Facebook', 'lightbox-photoswipe'),
@@ -1105,7 +1053,10 @@ class LightboxPhotoSwipe
         $translation_array['padding_top'] = intval($this->optionsManager->getOption('padding_top'));
         $translation_array['padding_right'] = intval($this->optionsManager->getOption('padding_right'));
         $translation_array['padding_bottom'] = intval($this->optionsManager->getOption('padding_bottom'));
-        wp_localize_script($handle, 'lbwpsOptions', $translation_array);
+
+        wp_register_script('lbwps-options', null);
+        wp_enqueue_script('lbwps-options');
+        wp_localize_script('lbwps-options', 'lbwpsOptions', $translation_array);
     }
 
     /**
@@ -1234,33 +1185,10 @@ class LightboxPhotoSwipe
             if (is_ssl()) {
                 $scheme = 'https';
             } else {
-                $scheme = parse_url($url, PHP_URL_SCHEME);
+                $scheme = wp_parse_url($url, PHP_URL_SCHEME);
             }
         }
 
         return set_url_scheme($url, $scheme);
-    }
-
-    /**
-     * Clean up Twig cache
-     */
-    protected function cleanupTwigCache()
-    {
-        // Clean up Twig cache if needed
-        $cacheFolder = WP_CONTENT_DIR.'/cache/'.self::SLUG;
-        if (is_writable($cacheFolder)) {
-            $path = $cacheFolder;
-            $it = new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS);
-            $files = new \RecursiveIteratorIterator($it,
-                \RecursiveIteratorIterator::CHILD_FIRST);
-            foreach ($files as $file) {
-                if ($file->isDir()){
-                    rmdir($file->getRealPath());
-                } else {
-                    unlink($file->getRealPath());
-                }
-            }
-            rmdir($path);
-        }
     }
 }

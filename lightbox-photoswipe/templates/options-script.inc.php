@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die(); ?>
 <script>
     function lbwpsUpdateDescriptionCheck(checkbox)
     {

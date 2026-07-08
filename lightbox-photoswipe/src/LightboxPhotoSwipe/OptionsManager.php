@@ -1,4 +1,6 @@
 <?php
+defined('ABSPATH') or die();
+
 /**
  * Options manager
  */
@@ -83,7 +85,14 @@ class OptionsManager
     public function registerOptions()
     {
         foreach (self::OPTIONS as $optionName => $option) {
-            register_setting('lightbox-photoswipe-settings-group', 'lightbox_photoswipe_'.$optionName);
+            register_setting(
+                'lightbox-photoswipe-settings-group',
+                'lightbox_photoswipe_'.$optionName,
+                [
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ]
+            );
         }
     }
 
