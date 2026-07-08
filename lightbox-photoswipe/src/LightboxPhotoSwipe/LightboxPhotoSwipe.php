@@ -8,7 +8,7 @@ include_once ABSPATH . 'wp-admin/includes/plugin.php';
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.8.6';
+    const VERSION = '5.8.7';
     const SLUG = 'lightbox-photoswipe';
     const META_VERSION = '22';
     const CACHE_EXPIRE_IMG_DETAILS = 86400;
