@@ -119,7 +119,7 @@ let lbwpsInit = function(domUpdate) {
     };
 
     let sanitizeCaption = function (caption) {
-        const regexp = /(?:(?!(<br>)|(<br \/>)|(<b>)|(<\/b>)|(<i>)|(<\/i>)|(<em>)|(<\/em>)|(<strong>)|(<\/strong>)|(<div>)|(<div style="([^"]+)">)|(<div class="([^"]+)">)|(<\/div>))(<[^>]+>))*/gi;
+        const regexp = /(?:(?!(<span class="([^"]+)">)|(<\/span>)|(<br>)|(<br \/>)|(<b>)|(<\/b>)|(<i>)|(<\/i>)|(<em>)|(<\/em>)|(<strong>)|(<\/strong>)|(<div>)|(<div style="([^"]+)">)|(<div class="([^"]+)">)|(<\/div>))(<[^>]+>))*/gi;
         if (typeof caption === 'string' || caption instanceof String) {
             return caption.replaceAll(regexp, '');
         }
