@@ -75,7 +75,7 @@
                 ?>
             </select>
             <p class="description"><?php echo esc_html__('Factor by which SVG images get scaled when displayed in the lightbox.', 'lightbox-photoswipe'); ?>
-            <?php if (!function_exists('simplexml_load_file')) { ?><br><?php echo esc_html__('<a href="https://www.php.net/manual/en/ref.simplexml.php" target="_blank">The PHP SimpleXML extension</a> is missing on this server! SVG images can not be displayed!', 'lightbox-photoswipe'); ?><?php } ?></p>
+            <?php if (!function_exists('simplexml_load_file')) { ?><br><?php echo esc_html__('The PHP SimpleXML extension is missing on this server! SVG images can not be displayed!', 'lightbox-photoswipe'); ?><?php } ?></p>
         </td>
     </tr>
     <tr>

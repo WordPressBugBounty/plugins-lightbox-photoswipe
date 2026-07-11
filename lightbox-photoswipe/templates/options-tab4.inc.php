@@ -26,7 +26,7 @@
             <?php echo esc_html__('EXIF information', 'lightbox-photoswipe'); ?>
         </th>
         <td>
-            <label><?php $this->uiControlCheckbox('showexif'); ?> <?php echo esc_html__('Show EXIF information if available', 'lightbox-photoswipe'); ?><?php if (!function_exists('exif_read_data')) { ?>(<?php echo esc_html__('<a href="https://www.php.net/manual/en/book.exif.php" target="_blank">the PHP EXIF extension</a> is missing on this server!', 'lightbox-photoswipe'); ?>)<?php } ?></label><br>
+            <label><?php $this->uiControlCheckbox('showexif'); ?> <?php echo esc_html__('Show EXIF information if available', 'lightbox-photoswipe'); ?><?php if (!function_exists('exif_read_data')) { ?>(<?php echo esc_html__('the PHP EXIF extension is missing on this server!', 'lightbox-photoswipe'); ?>)<?php } ?></label><br>
             <label><?php $this->uiControlCheckbox('showexif_lens'); ?> <?php echo esc_html__('Show lens name if available', 'lightbox-photoswipe'); ?></label><br>
             <label><?php $this->uiControlCheckbox('showexif_date'); ?> <?php echo esc_html__('Show date if available', 'lightbox-photoswipe'); ?></label>
         </td>

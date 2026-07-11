@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Lightbox with PhotoSwipe\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-13 09:32+0000\n"
-"PO-Revision-Date: 2026-07-08 22:12+0000\n"
+"PO-Revision-Date: 2026-07-11 15:54+0000\n"
 "Last-Translator: \n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
@@ -13,24 +13,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.6.4; wp-6.2-RC2-55551"
-
-#: templates/options-tab4.inc.php:29
-msgid ""
-"<a href=\"https://www.php.net/manual/en/book.exif.php\" target=\"_blank\">"
-"the PHP EXIF extension</a> is missing on this server!"
-msgstr ""
-"<a href=\"https://www.php.net/manual/fr/book.exif.php\" target=\"_blank\">"
-"l'extension PHP EXIF ​​​​</a> est manquante sur ce serveur !"
-
-#: templates/options-tab2.inc.php:78
-msgid ""
-"<a href=\"https://www.php.net/manual/en/ref.simplexml.php\" "
-"target=\"_blank\">The PHP SimpleXML extension</a> is missing on this server! "
-"SVG images can not be displayed!"
-msgstr ""
-"<a href=\"https://www.php.net/manual/en/ref.simplexml.php\" "
-"target=\"_blank\">L&#39;extension PHP SimpleXML</a> est manquante sur ce "
-"serveur ! Les images SVG ne peuvent pas être affichées!"
 
 #: templates/options-tab2.inc.php:49
 msgid "Allow infinite loop"
@@ -168,6 +150,14 @@ msgstr "Activer le geste de pincement pour fermer sur les appareils mobiles"
 msgid "Enable tap to toggle controls on mobile devices"
 msgstr ""
 "Activer le toucher pour basculer les commandes sur les appareils mobiles"
+
+#: templates/options-tab5.inc.php:37
+msgid "encoded URL of the image"
+msgstr "URL encodée de l'image"
+
+#: templates/options-tab5.inc.php:35
+msgid "encoded URL of the lightbox"
+msgstr "URL encodée de la lightbox"
 
 #: templates/options-tab2.inc.php:28
 msgid ""
@@ -360,19 +350,20 @@ msgstr "Ignorer les liens vers des images sur d'autres sites"
 msgid "Ignore links to images which contain a hash (#)"
 msgstr "Ignorer les liens vers des images contenant un hachage (#)"
 
+#: templates/options-tab5.inc.php:38
+msgid "image caption"
+msgstr "Légende de l'image"
+
 #: templates/options-tab1.inc.php:43
 msgid ""
 "Image information like size, EXIF data, name of the preview image is cached "
 "as WordPress transients. To improve performance with large image galleries "
-"you can use caching plugins like <a href=\"https://wordpress."
-"org/plugins/redis-cache/\" target=\"_blank\">Redis Object Cache</a>."
+"you can use caching plugins like Redis Object Cache:"
 msgstr ""
-"Les informations sur l'image telles que la taille, les données EXIF, le nom "
-"de l'image d'aperçu sont mises en cache en tant que transitoires WordPress. "
+"Les informations d'image telles que la taille, les données EXIF, le nom de "
+"l'image d'aperçu sont mises en cache sous forme de transients WordPress. "
 "Pour améliorer les performances avec de grandes galeries d'images, vous "
-"pouvez utiliser des plugins de mise en cache comme <a href=\"https:"
-"//wordpress.org/plugins/redis-cache/\" target=\"_blank\">Redis Object "
-"Cache</a>."
+"pouvez utiliser des plugins de mise en cache comme Redis Object Cache :"
 
 #: templates/options-tab3.inc.php:67
 msgid "Image padding"
@@ -488,17 +479,8 @@ msgid "pixels"
 msgstr "pixel"
 
 #: templates/options-tab5.inc.php:33
-msgid ""
-"Placeholders for the link:<br />{{raw_url}}&nbsp;&ndash;&nbsp;URL of the "
-"lightbox<br />{{url}}&nbsp;&ndash;&nbsp;encoded URL of the lightbox<br />"
-"{{raw_image_url}}&nbsp;&ndash;&nbsp;URL of the image<br />{{image_url}}&nbsp;"
-"&ndash;&nbsp;encoded URL of the image<br />{{text}}&nbsp;&ndash;&nbsp;image "
-"caption."
-msgstr ""
-"Espaces réservés pour le lien :<br /> {{raw_url}} – URL de la lightbox<br /> "
-"{{url}} - URL encodée de la lightbox<br /> {{raw_image_url}} – URL de l&#39;"
-"image<br /> {{image_url}} - URL encodée de l&#39;image<br /> {{text}} – "
-"légende de l&#39;image."
+msgid "Placeholders for the link:"
+msgstr "Espaces réservés pour le lien :"
 
 #: templates/options-tab1.inc.php:3
 msgid "Plugin version"
@@ -554,7 +536,7 @@ msgstr "Partager sur Facebook"
 msgid "Sharing"
 msgstr "Partage"
 
-#: templates/options-tab5.inc.php:39
+#: templates/options-tab5.inc.php:44
 msgid "Sharing options are not yet supported for PhotoSwipe 5."
 msgstr ""
 "Les options de partage ne sont pas encore prises en charge pour PhotoSwipe 5."
@@ -652,6 +634,18 @@ msgstr ""
 msgid "The image cannot be loaded"
 msgstr "L'image ne peut pas être chargée"
 
+#: templates/options-tab4.inc.php:29
+msgid "the PHP EXIF extension is missing on this server!"
+msgstr "l'extension PHP EXIF est manquante sur ce serveur !"
+
+#: templates/options-tab2.inc.php:78
+msgid ""
+"The PHP SimpleXML extension is missing on this server! SVG images can not be "
+"displayed!"
+msgstr ""
+"L'extension PHP SimpleXML est manquante sur ce serveur ! Les images SVG ne "
+"peuvent pas être affichées !"
+
 #. 1: image width, 2: image height
 #: templates/options-tab1.inc.php:29
 #, php-format
@@ -729,6 +723,14 @@ msgid ""
 msgstr ""
 "Mettre à jour l'historique du navigateur (revenir dans le navigateur fermera "
 "d'abord la lightbox)"
+
+#: templates/options-tab5.inc.php:36
+msgid "URL of the image"
+msgstr "URL de l'image"
+
+#: templates/options-tab5.inc.php:34
+msgid "URL of the lightbox"
+msgstr "URL de la lightbox"
 
 #: templates/options-tab6.inc.php:11
 msgid "Use slide animation when switching images in desktop view"

@@ -30,7 +30,12 @@
                 </th>
                 <td>
                     <?php $this->uiControltext('share_custom_link', '{{raw_image_url}}'); ?>
-                    <p class="description"><?php echo esc_html__('Placeholders for the link:<br />{{raw_url}}&nbsp;&ndash;&nbsp;URL of the lightbox<br />{{url}}&nbsp;&ndash;&nbsp;encoded URL of the lightbox<br />{{raw_image_url}}&nbsp;&ndash;&nbsp;URL of the image<br />{{image_url}}&nbsp;&ndash;&nbsp;encoded URL of the image<br />{{text}}&nbsp;&ndash;&nbsp;image caption.', 'lightbox-photoswipe'); ?></p>
+                    <p class="description"><?php echo esc_html__('Placeholders for the link:', 'lightbox-photoswipe'); ?><br>
+                        {{raw_url}}&nbsp;&ndash;&nbsp;<?php echo esc_html__('URL of the lightbox', 'lightbox-photoswipe'); ?><br>
+                        {{url}}&nbsp;&ndash;&nbsp;<?php echo esc_html__('encoded URL of the lightbox', 'lightbox-photoswipe'); ?><br>
+                        {{raw_image_url}}&nbsp;&ndash;&nbsp;<?php echo esc_html__('URL of the image', 'lightbox-photoswipe'); ?><br>
+                        {{image_url}}&nbsp;&ndash;&nbsp;<?php echo esc_html__('encoded URL of the image', 'lightbox-photoswipe'); ?><br>
+                        {{text}}&nbsp;&ndash;&nbsp;<?php echo esc_html__('image caption', 'lightbox-photoswipe'); ?></p>
                 </td>
             </tr>
         </table>

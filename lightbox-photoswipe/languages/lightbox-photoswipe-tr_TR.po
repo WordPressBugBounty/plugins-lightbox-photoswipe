@@ -5,33 +5,16 @@ msgstr ""
 "Project-Id-Version: Lightbox with PhotoSwipe\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-02 22:20+0000\n"
-"PO-Revision-Date: 2026-07-08 22:14+0000\n"
-"Last-Translator: Your Name <email@example.com>\n"
+"PO-Revision-Date: 2026-07-11 15:56+0000\n"
+"Last-Translator: Arno Welzel\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Loco https://localise.biz/"
-
-#: templates/options-tab4.inc.php:29
-msgid ""
-"<a href=\"https://www.php.net/manual/en/book.exif.php\" target=\"_blank\">"
-"the PHP EXIF extension</a> is missing on this server!"
-msgstr ""
-"Bu sunucuda <a href=\"https://www.php.net/manual/en/book.exif.php\" "
-"target=\"_blank\">PHP EXIF eklentisi</a> eksik!"
-
-#: templates/options-tab2.inc.php:78
-msgid ""
-"<a href=\"https://www.php.net/manual/en/ref.simplexml.php\" "
-"target=\"_blank\">The PHP SimpleXML extension</a> is missing on this server! "
-"SVG images can not be displayed!"
-msgstr ""
-"Bu sunucuda <a href=\"https://www.php.net/manual/en/ref.simplexml.php\" "
-"target=\"_blank\">PHP SimpleXML eklentisi</a> eksik! SVG resimleri "
-"gösterilemez!"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.5; wp-7.0.1; php-8.5.4"
 
 #: templates/options-tab2.inc.php:49
 msgid "Allow infinite loop"
@@ -165,6 +148,14 @@ msgstr "Mobil cihazlarda kapatmak için kıstırma hareketini etkinleştir"
 #: templates/options-tab7.inc.php:12
 msgid "Enable tap to toggle controls on mobile devices"
 msgstr "Mobil cihazlarda kontrolleri açıp kapatmak için dokunmayı etkinleştir"
+
+#: templates/options-tab5.inc.php:37
+msgid "encoded URL of the image"
+msgstr "görselin kodlanmış URL'si"
+
+#: templates/options-tab5.inc.php:35
+msgid "encoded URL of the lightbox"
+msgstr "lightbox'un kodlanmış URL'si"
 
 #: templates/options-tab2.inc.php:28
 msgid ""
@@ -342,18 +333,20 @@ msgstr "Diğer sitelerdeki resim bağlantılarını yoksay"
 msgid "Ignore links to images which contain a hash (#)"
 msgstr "Diyez (#) işareti içeren resim bağlantılarını yoksay"
 
+#: templates/options-tab5.inc.php:38
+msgid "image caption"
+msgstr "görsel başlığı"
+
 #: templates/options-tab1.inc.php:43
 msgid ""
 "Image information like size, EXIF data, name of the preview image is cached "
 "as WordPress transients. To improve performance with large image galleries "
-"you can use caching plugins like <a href=\"https://wordpress."
-"org/plugins/redis-cache/\" target=\"_blank\">Redis Object Cache</a>."
+"you can use caching plugins like Redis Object Cache:"
 msgstr ""
-"Boyut, EXIF verileri, önizleme resminin adı gibi resim bilgileri WordPress "
-"geçici (transient) olarak önbelleğe alınır. Büyük resim galerilerinde "
-"performansı artırmak için <a href=\"https://wordpress.org/plugins/redis-"
-"cache/\" target=\"_blank\">Redis Object Cache</a> gibi önbellekleme "
-"eklentilerini kullanabilirsiniz."
+"Görselin boyutu, EXIF verileri, önizleme görselinin adı gibi bilgiler "
+"WordPress geçici verileri olarak önbelleğe alınır. Büyük görsel "
+"galerileriyle performansı artırmak için Redis Object Cache gibi önbellek "
+"eklentileri kullanabilirsiniz:"
 
 #: templates/options-tab3.inc.php:67
 msgid "Image padding"
@@ -467,18 +460,8 @@ msgid "pixels"
 msgstr "piksel"
 
 #: templates/options-tab5.inc.php:33
-msgid ""
-"Placeholders for the link:<br />{{raw_url}}&nbsp;&ndash;&nbsp;URL of the "
-"lightbox<br />{{url}}&nbsp;&ndash;&nbsp;encoded URL of the lightbox<br />"
-"{{raw_image_url}}&nbsp;&ndash;&nbsp;URL of the image<br />{{image_url}}&nbsp;"
-"&ndash;&nbsp;encoded URL of the image<br />{{text}}&nbsp;&ndash;&nbsp;image "
-"caption."
-msgstr ""
-"Bağlantı için yer tutucular:<br />{{raw_url}}&nbsp;&ndash;&nbsp;lightbox "
-"URL'si<br />{{url}}&nbsp;&ndash;&nbsp;kodlanmış lightbox URL'si<br />"
-"{{raw_image_url}}&nbsp;&ndash;&nbsp;resmin URL'si<br />{{image_url}}&nbsp;"
-"&ndash;&nbsp;resmin kodlanmış URL'si<br />{{text}}&nbsp;&ndash;&nbsp;resim "
-"altyazısı."
+msgid "Placeholders for the link:"
+msgstr "Bağlantı için yer tutucular:"
 
 #: templates/options-tab1.inc.php:3
 msgid "Plugin version"
@@ -532,7 +515,7 @@ msgstr "Facebook'ta paylaş"
 msgid "Sharing"
 msgstr "Paylaşım"
 
-#: templates/options-tab5.inc.php:39
+#: templates/options-tab5.inc.php:44
 msgid "Sharing options are not yet supported for PhotoSwipe 5."
 msgstr "Paylaşım seçenekleri PhotoSwipe 5 için henüz desteklenmiyor."
 
@@ -624,9 +607,20 @@ msgstr ""
 msgid "The image cannot be loaded"
 msgstr "Resim yüklenemiyor"
 
+#: templates/options-tab4.inc.php:29
+msgid "the PHP EXIF extension is missing on this server!"
+msgstr "bu sunucuda PHP EXIF uzantısı eksik!"
+
+#: templates/options-tab2.inc.php:78
+msgid ""
+"The PHP SimpleXML extension is missing on this server! SVG images can not be "
+"displayed!"
+msgstr ""
+"Bu sunucuda PHP SimpleXML uzantısı eksik! SVG görüntüler görüntülenemiyor!"
+
 #. 1: image width, 2: image height
 #: templates/options-tab1.inc.php:29
-#, fuzzy, php-format
+#, php-format
 #| msgid ""
 #| "The smallest size (%d×%d pixels) will be used to check if a smaller image "
 #| "is available for the transition."
@@ -634,8 +628,8 @@ msgid ""
 "The smallest size (%1$d×%2$d pixels) will be used to check if a smaller "
 "image is available for the transition."
 msgstr ""
-"En küçük boyut (%d×%d piksel), geçiş için daha küçük bir resmin mevcut olup "
-"olmadığını kontrol etmek için kullanılacaktır."
+"En küçük boyut (%1$d×%2$d piksel), geçiş için daha küçük bir resmin mevcut "
+"olup olmadığını kontrol etmek için kullanılacaktır."
 
 #: templates/options-navigation.inc.php:5
 msgid "Theme"
@@ -692,6 +686,14 @@ msgid ""
 "lightbox)"
 msgstr ""
 "Tarayıcı geçmişini güncelle (tarayıcıda geri gitmek önce lightbox'ı kapatır)"
+
+#: templates/options-tab5.inc.php:36
+msgid "URL of the image"
+msgstr "Görselin URL'si"
+
+#: templates/options-tab5.inc.php:34
+msgid "URL of the lightbox"
+msgstr "Lightbox URL'sı"
 
 #: templates/options-tab6.inc.php:11
 msgid "Use slide animation when switching images in desktop view"

@@ -40,6 +40,6 @@ if(PHP_VERSION_ID < 70400) {
             820/1400 * $this->imageSizes[0]['width'],
             $this->imageSizes[0]['height']
         )); ?></p>
-    <p class="lbwps_text"><?php echo esc_html__('Image information like size, EXIF data, name of the preview image is cached as WordPress transients. To improve performance with large image galleries you can use caching plugins like <a href="https://wordpress.org/plugins/redis-cache/" target="_blank">Redis Object Cache</a>.', 'lightbox-photoswipe'); ?></p>
+    <p class="lbwps_text"><?php echo esc_html__('Image information like size, EXIF data, name of the preview image is cached as WordPress transients. To improve performance with large image galleries you can use caching plugins like Redis Object Cache:', 'lightbox-photoswipe'); ?> <a href="https://wordpress.org/plugins/redis-cache/" target="_blank">https://wordpress.org/plugins/redis-cache/</a></p>
     <p class="lbwps_text"><?php echo esc_html__('For documentation about hooks, styling etc. please see FAQ', 'lightbox-photoswipe'); ?>: <a href="https://wordpress.org/plugins/lightbox-photoswipe/#faq" target="_blank">https://wordpress.org/plugins/lightbox-photoswipe/#faq</a>.</p>
 </div>
