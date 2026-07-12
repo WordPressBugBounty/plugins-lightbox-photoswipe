@@ -54,7 +54,7 @@
             <label><?php $this->uiControlCheckbox('fix_links') ?>&nbsp;<?php echo esc_html__('Fix links to images which include image sizes (e.g. "image-1024x768.jpg" instead of "image.jpg")', 'lightbox-photoswipe'); ?></label><br>
             <label><?php $this->uiControlCheckbox('fix_scaled') ?>&nbsp;<?php echo esc_html__('Fix links to scaled or rotated images (e.g. "image.jpg" instead of "image-scaled.jpg" or "image-rotated.jpg")', 'lightbox-photoswipe'); ?></label><br>
             <label><?php $this->uiControlCheckbox('fix_attachment_links') ?>&nbsp;<?php echo esc_html__('Fix links to attachment pages instead of images (may slow down your website)', 'lightbox-photoswipe'); ?></label><br>
-            <label><?php $this->uiControlCheckbox('support_multiple_domain_mapping') ?>&nbsp;<?php echo esc_html__('Support for <a href="https://wordpress.org/plugins/multiple-domain-mapping-on-single-site/" target="_blank">Multiple Domain Mapping on Single Site</a>', 'lightbox-photoswipe'); ?></label><br>
+            <label><?php $this->uiControlCheckbox('support_multiple_domain_mapping') ?>&nbsp;<?php echo esc_html__('Support for "Multiple Domain Mapping on Single Site"', 'lightbox-photoswipe'); ?> (<a href="https://wordpress.org/plugins/multiple-domain-mapping-on-single-site/" target="_blank">https://wordpress.org/plugins/multiple-domain-mapping-on-single-site/</a>)</label><br>
             <label><?php $this->uiControlCheckbox('use_transients') ?>&nbsp;<?php echo esc_html__('Cache image information in transients (disabling this can slow down your website, try an object cache first)', 'lightbox-photoswipe'); ?></label><br>
         </td>
     </tr>

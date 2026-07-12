@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Lightbox PhotoSwipe\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-28 15:59+0000\n"
-"PO-Revision-Date: 2026-07-11 15:53+0000\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2026-07-12 08:16+0000\n"
+"Last-Translator: Arno Welzel\n"
 "Language-Team: Deutsch (Sie)\n"
 "Language: de_DE_formal\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.8.0; wp-6.8-beta3-60042; php-8.3.22"
+"X-Loco-Version: 2.8.5; wp-7.0.1; php-8.5.4"
 
 #: templates/options-tab2.inc.php:49
 msgid "Allow infinite loop"
@@ -82,7 +82,7 @@ msgstr "Schließen [Esc]"
 
 #: templates/options-tab6.inc.php:12
 msgid "Close the lightbox by clicking outside the image"
-msgstr "Lightbox schließen durch klicken außerhalb des Bilds"
+msgstr "Lightbox schließen durch klicken außerhalb des Bildes"
 
 #: templates/options-tab7.inc.php:10
 msgid "Close with vertical drag in mobile view"
@@ -150,7 +150,7 @@ msgstr "\"Tap to toggle controls\" auf mobilen Geräten aktivieren"
 
 #: templates/options-tab5.inc.php:37
 msgid "encoded URL of the image"
-msgstr "codierte URL des Bilds"
+msgstr "codierte URL des Bildes"
 
 #: templates/options-tab5.inc.php:35
 msgid "encoded URL of the lightbox"
@@ -259,7 +259,7 @@ msgid ""
 "website are as following"
 msgstr ""
 "Für den Übergang beim Öffnen von PhotoSwipe verwendet das Plugin eine "
-"kleinere Version des verlinkten Bilds wenn verfügbar. Die registrierten "
+"kleinere Version des verlinkten Bildes wenn verfügbar. Die registrierten "
 "Bildgrößen auf dieser Website sind wie folgt"
 
 #: templates/options-tab6.inc.php:10
@@ -543,7 +543,7 @@ msgstr "Datum anzeigen, wenn vorhanden"
 
 #: templates/options-tab2.inc.php:38
 msgid "Show download button"
-msgstr "Download-Schaltfläche anzeigen"
+msgstr "Herunterladen-Schaltfläche anzeigen"
 
 #: templates/options-tab4.inc.php:29
 msgid "Show EXIF information if available"
@@ -589,14 +589,8 @@ msgid "Spacing between pictures"
 msgstr "Abstand zwischen den Bildern"
 
 #: templates/options-tab2.inc.php:57
-msgid ""
-"Support for <a href=\"https://wordpress.org/plugins/multiple-domain-mapping-"
-"on-single-site/\" target=\"_blank\">Multiple Domain Mapping on Single "
-"Site</a>"
-msgstr ""
-"Unterstützung für <a href=\"https://de.wordpress.org/plugins/multiple-domain-"
-"mapping-on-single-site/\" target=\"_blank\">Multiple Domain Mapping on "
-"Single Site</a>"
+msgid "Support for \"Multiple Domain Mapping on Single Site\""
+msgstr "Unterstützung für \"Multiple Domain Mapping on Single Site\""
 
 #: templates/options-tab2.inc.php:63
 msgid "SVG scaling factor"
@@ -624,14 +618,14 @@ msgstr "Das Bild can nicht geladen werden"
 
 #: templates/options-tab4.inc.php:29
 msgid "the PHP EXIF extension is missing on this server!"
-msgstr "die PHP EXIF‑Erweiterung fehlt auf diesem Server!"
+msgstr "die PHP-EXIF‑Erweiterung fehlt auf diesem Server!"
 
 #: templates/options-tab2.inc.php:78
 msgid ""
 "The PHP SimpleXML extension is missing on this server! SVG images can not be "
 "displayed!"
 msgstr ""
-"Die PHP SimpleXML-Erweiterung fehlt auf diesem Server! SVG-Bilder können "
+"Die PHP-SimpleXML-Erweiterung fehlt auf diesem Server! SVG-Bilder können "
 "nicht angezeigt werden!"
 
 #. 1: image width, 2: image height
@@ -713,7 +707,7 @@ msgstr ""
 
 #: templates/options-tab5.inc.php:36
 msgid "URL of the image"
-msgstr "URL des Bilds"
+msgstr "URL des Bildes"
 
 #: templates/options-tab5.inc.php:34
 msgid "URL of the lightbox"

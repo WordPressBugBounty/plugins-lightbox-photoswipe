@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 15:50+0000\n"
+"POT-Creation-Date: 2026-07-12 07:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -519,10 +519,7 @@ msgid "Spacing between pictures"
 msgstr ""
 
 #: templates/options-tab2.inc.php:57
-msgid ""
-"Support for <a href=\"https://wordpress.org/plugins/multiple-domain-mapping-"
-"on-single-site/\" target=\"_blank\">Multiple Domain Mapping on Single "
-"Site</a>"
+msgid "Support for \"Multiple Domain Mapping on Single Site\""
 msgstr ""
 
 #: templates/options-tab2.inc.php:63
