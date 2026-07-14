@@ -4,7 +4,7 @@ Contributors: awelzel
 Tags: lightbox, photoswipe, attachments, images, gallery
 Requires at least: 6.5
 Tested up to: 7.0
-Stable tag: 5.9.5
+Stable tag: 5.9.6
 Donate link: https://paypal.me/ArnoWelzel
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -114,8 +114,7 @@ PhotoSwipe 5 improves the overall performance and compatibility with newer mobil
 
 Which styles are available depends on which PhotoSwipe version you use and what kind of caption.
 
-Please use the web developer tools of your browser to examine the caption elements and to learn which CSS classes
-are used.
+Please use the web developer tools of your browser to examine the caption elements and to learn which CSS classes are used.
 
 = Why is there no "zoom animation" when opening the lightbox? =
 
@@ -156,6 +155,10 @@ The main repository for the source code can be found at [https://codeberg.org/as
 5. Desktop options in the backend
 
 == Changelog ==
+
+= 5.9.6 =
+
+* Extended HTML whitelisting for captions to allow links with optional target and style as well.
 
 = 5.9.3-5.9.5 =
 

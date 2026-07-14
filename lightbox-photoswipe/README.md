@@ -6,6 +6,10 @@ More about PhotoSwipe see here: [http://photoswipe.com](http://photoswipe.com)
 
 For more information about how to install Lightbox with PhotoSwipe see the [WordPress plugin repository](https://wordpress.org/plugins/lightbox-photoswipe/).
 
+## My position on using AI in my free software projects
+
+AI-generated contributions will never be knowingly accepted. If and where unknowingly accepted, help in pointing out and eliminating the slop portions is generally welcome.
+
 ## Custom styles for PhotoSwipe 5
 
 Please note that this plugin uses a custom stylesheet for the frontend (see `assets/ps5/lib/photoswipe-local.css`).
