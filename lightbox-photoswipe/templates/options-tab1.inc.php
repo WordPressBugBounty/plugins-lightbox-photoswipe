@@ -1,8 +1,8 @@
 <?php defined('ABSPATH') or die(); ?>
 <div id="lbwps-tab-1" style="display:none">
-    <p class="lbwps_text"><?php echo esc_html__('Plugin version', 'lightbox-photoswipe'); ?>: <?php echo esc_html(self::VERSION) ?></p>
-    <p class="lbwps_text"><?php echo esc_html__('PHP version', 'lightbox-photoswipe'); ?>: <?php echo esc_html(phpversion()); ?></p>
-    <p class="lbwps_text"><?php echo esc_html__('Metadata version', 'lightbox-photoswipe'); ?>: <?php echo esc_html(self::META_VERSION); ?></p>
+    <p class="lbwps_text"><?php echo esc_html__('Plugin version', 'lightbox-photoswipe'); ?>: <?php echo esc_html(self::VERSION) ?><br>
+    <?php echo esc_html__('PHP version', 'lightbox-photoswipe'); ?>: <?php echo esc_html(phpversion()); ?><br>
+    <?php echo esc_html__('Metadata version', 'lightbox-photoswipe'); ?>: <?php echo esc_html(self::META_VERSION); ?></p>
 <?php
 if(PHP_VERSION_ID < 70400) {
 ?>

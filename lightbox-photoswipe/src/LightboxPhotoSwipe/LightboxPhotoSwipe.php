@@ -1,14 +1,14 @@
 <?php
-defined('ABSPATH') or die();
+namespace LightboxPhotoSwipe;
 
-include_once ABSPATH . 'wp-admin/includes/plugin.php';
+defined('ABSPATH') or die();
 
 /**
  * Main class for the plugin
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.9.6';
+    const VERSION = '5.10.0';
     const SLUG = 'lightbox-photoswipe';
     const META_VERSION = '22';
     const CACHE_EXPIRE_IMG_DETAILS = 86400;
@@ -21,7 +21,7 @@ class LightboxPhotoSwipe
 
     const PHP_MINIMUM_VERSION_DISPLAY = '8.2';
 
-    private $phpVersionId;
+    private static $instance;
 
     private $pluginFile;
     private $optionsManager;
@@ -100,6 +100,13 @@ class LightboxPhotoSwipe
             $this->baseUrlHttps = $baseUrl;
             $this->baseUrlHttp = 'http://'.substr($baseUrl, 8);
         }
+    }
+
+    public static function instance($pluginFile = null) {
+        if (!isset(self::$instance)) {
+            self::$instance = new self($pluginFile);
+        }
+        return self::$instance;
     }
 
     /**
