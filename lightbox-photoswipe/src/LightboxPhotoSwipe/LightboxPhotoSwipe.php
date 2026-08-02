@@ -8,7 +8,7 @@ defined('ABSPATH') or die();
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.10.0';
+    const VERSION = '5.10.1';
     const SLUG = 'lightbox-photoswipe';
     const META_VERSION = '22';
     const CACHE_EXPIRE_IMG_DETAILS = 86400;
@@ -88,7 +88,8 @@ class LightboxPhotoSwipe
         // https://wordpress.org/plugins/multiple-domain-mapping-on-single-site/
 
         $this->domainMappings = false;
-        if (is_plugin_active('multiple-domain-mapping-on-single-site/multidomainmapping.php')) {
+        $activePlugins = get_option('active_plugins', []);
+        if (in_array('multiple-domain-mapping-on-single-site/multidomainmapping.php', $activePlugins)) {
             $this->domainMappings = get_option('falke_mdm_mappings');
         }
 
