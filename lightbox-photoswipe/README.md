@@ -49,9 +49,9 @@ You should then see an output like this:
 ```
 Building frontend script (PhotoSwipe 4)
 Building frontend scripts (PhotoSwipe 5)
-Building style for PhotoSwipe 4 skin classic
-Building style for PhotoSwipe 4 skin classic-solid
-Building style for PhotoSwipe 4 skin default
-Building style for PhotoSwipe 4 skin default-solid
+Building styles for PhotoSwipe 4
 Building style for PhotoSwipe 5
 ```
+
+Please note: for security reasons, the file `build.php` can not be called standalone but will just exit if you
+try to do so.
