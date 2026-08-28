@@ -1,4 +1,6 @@
 <?php
+namespace LightboxPhotoSwipe;
+
 defined('ABSPATH') or die();
 
 if(!defined('WP_UNINSTALL_PLUGIN')) exit();

@@ -4,7 +4,7 @@ Contributors: awelzel
 Tags: lightbox, photoswipe, attachments, images, gallery
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 5.11.0
+Stable tag: 5.12.0
 Donate link: https://paypal.me/ArnoWelzel
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -156,6 +156,10 @@ The main repository for the source code can be found at [https://codeberg.org/as
 
 == Changelog ==
 
+= 5.12.0 =
+
+* Fixed uninstall handler.
+
 = 5.11.0 =
 
 * Updated WordPress compatibility information.
@@ -163,7 +167,7 @@ The main repository for the source code can be found at [https://codeberg.org/as
 
 = 5.10.1 =
 
-* Fix error due to missing function.
+* Fixed error due to missing function.
 
 = 5.10.0 =
 
