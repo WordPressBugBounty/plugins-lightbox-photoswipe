@@ -35,10 +35,10 @@ class Build
         echo "Building frontend script (PhotoSwipe 4)\n";
 
         $minifyJs = new Minify\JS();
-        $minifyJs->add('src/lib/photoswipe.js');
-        $minifyJs->add('src/lib/photoswipe-ui-default.js');
-        $minifyJs->add('src/js/frontend.js');
-        $minifyJs->minify('assets/ps4/scripts.js');
+        $minifyJs->add('assets/ps4/lib/photoswipe.js');
+        $minifyJs->add('assets/ps4/lib/photoswipe-ui-default.js');
+        $minifyJs->add('assets/ps4/frontend.js');
+        $minifyJs->minify('assets/ps4/frontend.min.js');
 
         echo "Building frontend scripts (PhotoSwipe 5)\n";
 
@@ -65,11 +65,11 @@ class Build
         // Skins:
         // Combine all styles for each skine to one minifed file which includes all images as data URIs
 
-        $sourcePhotoswipe = file_get_contents('src/lib/photoswipe.css');
+        $sourcePhotoswipe = file_get_contents('assets/ps4/lib/photoswipe.css');
         echo sprintf("Building styles for PhotoSwipe 4\n");
         foreach (['classic', 'classic-solid', 'default', 'default-solid'] as $skin) {
             $minifyCss = new Minify\CSS();
-            $source = $sourcePhotoswipe.file_get_contents(sprintf('src/lib/skins/%s/skin.css', $skin));
+            $source = $sourcePhotoswipe.file_get_contents(sprintf('assets/ps4/lib/skins/%s/skin.css', $skin));
             $matches = [];
             if (preg_match_all('/url\\((.+)\\)/m', $source, $matches)) {
                 $num = 0;
@@ -90,7 +90,7 @@ class Build
                             'data:%s;base64,%s',
                             $mimeType,
                             base64_encode(
-                                file_get_contents(sprintf('src/lib/skins/%s/%s', $skin, $fileName))
+                                file_get_contents(sprintf('assets/ps4/lib/skins/%s/%s', $skin, $fileName))
                             )
                         );
                         $source = str_replace($matches[0][$num], sprintf('url(\'%s\')', $data), $source);

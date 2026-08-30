@@ -8,7 +8,7 @@ defined('ABSPATH') or die();
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.12.0';
+    const VERSION = '5.13.0';
     const SLUG = 'lightbox-photoswipe';
     const META_VERSION = '22';
     const CACHE_EXPIRE_IMG_DETAILS = 86400;
@@ -179,26 +179,26 @@ class LightboxPhotoSwipe
             if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) {
                 wp_enqueue_script(
                     'lbwps-photoswipe',
-                    sprintf('%ssrc/lib/photoswipe.js', $this->getPluginUrl()),
+                    sprintf('%sassets/ps4/lib/photoswipe.js', $this->getPluginUrl()),
                     [],
                     self::VERSION
                 );
                 wp_enqueue_script(
                     'lbwps-photoswipe-ui',
-                    sprintf('%ssrc/lib/photoswipe-ui-default.js', $this->getPluginUrl()),
+                    sprintf('%sassets/ps4/lib/photoswipe-ui-default.js', $this->getPluginUrl()),
                     [],
                     self::VERSION
                 );
                 wp_enqueue_script(
                     'lbwps',
-                    sprintf('%ssrc/js/frontend.js', $this->getPluginUrl()),
+                    sprintf('%sassets/ps4/frontend.js', $this->getPluginUrl()),
                     [],
                     self::VERSION
                 );
             } else {
                 wp_enqueue_script(
                     'lbwps',
-                    sprintf('%sassets/ps4/scripts.js', $this->getPluginUrl()),
+                    sprintf('%sassets/ps4/frontend.min.js', $this->getPluginUrl()),
                     [],
                     self::VERSION
                 );
@@ -220,13 +220,13 @@ class LightboxPhotoSwipe
             if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) {
                 wp_enqueue_style(
                     'lbwps-styles-photoswipe',
-                    sprintf('%ssrc/lib/photoswipe.css', $this->getPluginUrl()),
+                    sprintf('%sassets/ps4/lib/photoswipe.css', $this->getPluginUrl()),
                     false,
                     self::VERSION
                 );
                 wp_enqueue_style(
                     'lbwps-styles',
-                    sprintf('%ssrc/lib/skins/%s/skin.css', $this->getPluginUrl(), $skin),
+                    sprintf('%sassets/ps4/lib/skins/%s/skin.css', $this->getPluginUrl(), $skin),
                     false,
                     self::VERSION
                 );

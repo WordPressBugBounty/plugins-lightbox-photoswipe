@@ -4,7 +4,7 @@ Contributors: awelzel
 Tags: lightbox, photoswipe, attachments, images, gallery
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 5.12.0
+Stable tag: 5.13.0
 Donate link: https://paypal.me/ArnoWelzel
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -142,7 +142,7 @@ To avoid any confusion: this plugin was published with the agreement of Dmytro S
 
 = Source and contributing =
 
-If you change any of the stylesheets or frontend scripts in `src/js` or `src/lib` you need to run `make build` to generate new compressed frontend assets.
+If you change any of the stylesheets or frontend scripts in the `assets` folder you need to run `make build` to generate new compressed frontend assets.
 
 The main repository for the source code can be found at [https://codeberg.org/askaaron/lightbox-photoswipe](https://codeberg.org/askaaron/lightbox-photoswipe).
 
@@ -155,6 +155,11 @@ The main repository for the source code can be found at [https://codeberg.org/as
 5. Desktop options in the backend
 
 == Changelog ==
+
+= 5.13.0 =
+
+* Code refactoring to have all assets for PhotoSwipe 4 in one common folder.
+* Fix use of captions in <figcaption> elements to be used only, if they are valid for an image.
 
 = 5.12.0 =
 
