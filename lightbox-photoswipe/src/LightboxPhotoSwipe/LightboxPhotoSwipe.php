@@ -8,9 +8,9 @@ defined('ABSPATH') or die();
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.13.0';
+    const VERSION = '5.14.0';
     const SLUG = 'lightbox-photoswipe';
-    const META_VERSION = '22';
+    const META_VERSION = '23';
     const CACHE_EXPIRE_IMG_DETAILS = 86400;
     const DB_VERSION = 36;
     const BASEPATH = WP_PLUGIN_DIR.'/'.self::SLUG.'/';
@@ -335,6 +335,7 @@ class LightboxPhotoSwipe
         $captionTitle = '';
         $captionFilename = '';
         $isLocal = false;
+        $useMetaData = false;
 
         if (!in_array($extension, self::SUPPORTED_FORMATS)) {
             // Ignore unknown image formats
@@ -400,6 +401,9 @@ class LightboxPhotoSwipe
         }
 
         if ($use) {
+            $imgMtime = 0;
+            $imageMetaData = false;
+
             $uploadDir = wp_upload_dir()['basedir'];
             $uploadUrl = wp_upload_dir()['baseurl'];
 
@@ -465,8 +469,8 @@ class LightboxPhotoSwipe
                 if ('1' === $this->optionsManager->getOption('fix_scaled')) {
                     $fileFixed = preg_filter($scaledRotatedMatcher, '.', $file);
                     if ($fileFixed !== null && $fileFixed !== $file) {
-                        $file = $fileFixed . $extension;
-                        $matches[2] = preg_filter($scaledRotatedMatcher, '.', $matches[2]) . $extension;
+                        $file = $fileFixed.$extension;
+                        $matches[2] = preg_filter($scaledRotatedMatcher, '.', $matches[2]).$extension;
 
                         if ($file !== $fileOriginal) {
                             $fileOriginalNoRotatedScaled = $file;
@@ -474,8 +478,14 @@ class LightboxPhotoSwipe
                     }
                 }
 
-                // Try to get metadata from database
-                if ('1' === $this->optionsManager->getOption('usepostdata') && '1' === $this->optionsManager->getOption('show_caption')) {
+                if (is_readable($file)) {
+                    $imgMtime = @filemtime($file);
+                } else {
+                    $useMetaData = true;
+                }
+
+                // Try to get metadata from database if configured or needed
+                if ($useMetaData || '1' === $this->optionsManager->getOption('usepostdata') && '1' === $this->optionsManager->getOption('show_caption')) {
                     $imgId = $wpdb->get_col(
                         $wpdb->prepare(
                             'SELECT post_id FROM '.$wpdb->postmeta.' WHERE meta_key = "_wp_attached_file" and meta_value in (%s, %s, %s, %s, %s);',
@@ -491,22 +501,15 @@ class LightboxPhotoSwipe
                         $captionCaption = $imgPost->post_excerpt;
                         $captionTitle = $imgPost->post_title;
                         $captionDescription = $imgPost->post_content;
+                        $imageMetaData = wp_get_attachment_metadata($imgId[0]);
                     }
                 }
 
-                $imgMtime = @filemtime($file);
-                if (false === $imgMtime) {
-                    $imgMtime = 0;
-                }
-
                 $captionFilename = basename($file);
-            } else {
-                // For external files we don't try to get the modification time
-                // as this can cause PHP warning messages in server logs
-                $imgMtime = 0;
             }
 
             $imgDetails = false;
+            $cacheKey = false;
             if (!defined('WP_DEBUG') || WP_DEBUG !== true) {
                 $cacheKey = sprintf('%s-%s-image-%s', self::META_VERSION, self::SLUG, hash('md5', $file.$imgMtime));
                 if ($this->optionsManager->getOption('use_transients')) {
@@ -514,8 +517,13 @@ class LightboxPhotoSwipe
                 }
             }
             if (!$imgDetails) {
-                $imageSize = $this->getImageSize($file . $params, $extension);
-                if (false !== $imageSize && is_numeric($imageSize[0]) && is_numeric($imageSize[1]) && $imageSize[0] > 0 && $imageSize[1] > 0) {
+                if ($useMetaData) {
+                    $imageSize[0] = $imageMetaData['width'] ?? 0;
+                    $imageSize[1] = $imageMetaData['height'] ?? 0;
+                } else {
+                    $imageSize = $this->getImageSize($file . $params, $extension);
+                }
+                if (is_numeric($imageSize[0]) && is_numeric($imageSize[1]) && $imageSize[0] > 0 && $imageSize[1] > 0) {
                     $pathInfo = pathinfo($file);
                     $fileSmall = $file;
                     if ($isLocal) {
@@ -590,7 +598,7 @@ class LightboxPhotoSwipe
                             }
                         }
                     }
-                    if ((!defined('WP_DEBUG') || WP_DEBUG !== true) && $this->optionsManager->getOption('use_transients')) {
+                    if ($cacheKey !== false && $this->optionsManager->getOption('use_transients')) {
                         set_transient($cacheKey, $imgDetails, self::CACHE_EXPIRE_IMG_DETAILS);
                     }
                 }
@@ -1120,7 +1128,9 @@ class LightboxPhotoSwipe
     {
         $imageSize = [0, 0];
         if ($extension !== 'svg') {
-            $imageSize = @getimagesize($file);
+            if (is_readable($file)) {
+                $imageSize = @getimagesize($file);
+            }
         } else {
             if (function_exists('simplexml_load_file')) {
                 $svgContent = simplexml_load_file($file);

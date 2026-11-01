@@ -16,7 +16,7 @@ class ExifHelper
     function readExifDataFromFile(string $file, string $extension)
     {
         $this->exifData = false;
-        if (function_exists('exif_read_data')) {
+        if (function_exists('exif_read_data') && is_readable($file)) {
             $this->exifData = @exif_read_data($file, 'EXIF', true);
         }
 
