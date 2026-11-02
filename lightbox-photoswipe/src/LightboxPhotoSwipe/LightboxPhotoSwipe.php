@@ -8,10 +8,10 @@ defined('ABSPATH') or die();
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.14.0';
+    const VERSION = '5.17.0';
     const SLUG = 'lightbox-photoswipe';
-    const META_VERSION = '23';
-    const CACHE_EXPIRE_IMG_DETAILS = 86400;
+    const META_VERSION = '24';
+    const CACHE_EXPIRE_IMG_DETAILS = 86400 * 7;
     const DB_VERSION = 36;
     const BASEPATH = WP_PLUGIN_DIR.'/'.self::SLUG.'/';
     const SUPPORTED_FORMATS = ['jpg', 'jpeg', 'jpe', 'gif', 'png', 'bmp', 'tif', 'tiff', 'ico', 'webp', 'svg', 'avif'];
@@ -80,6 +80,8 @@ class LightboxPhotoSwipe
             add_action( 'add_meta_boxes', [$this, 'metaBox'] );
             add_action( 'save_post', [$this, 'metaBoxSave'] );
         }
+
+        add_filter( 'wp_delete_file', [$this, 'onDeleteFile'] );
 
         register_activation_hook($pluginFile, [$this, 'onActivate']);
         register_deactivation_hook($pluginFile, [$this, 'onDeactivate']);
@@ -511,12 +513,12 @@ class LightboxPhotoSwipe
             $imgDetails = false;
             $cacheKey = false;
             if (!defined('WP_DEBUG') || WP_DEBUG !== true) {
-                $cacheKey = sprintf('%s-%s-image-%s', self::META_VERSION, self::SLUG, hash('md5', $file.$imgMtime));
+                $cacheKey = sprintf('%s-image-%s', self::SLUG, hash('md5', $file.$imgMtime));
                 if ($this->optionsManager->getOption('use_transients')) {
                     $imgDetails = get_transient($cacheKey);
                 }
             }
-            if (!$imgDetails) {
+            if (!$imgDetails || !isset($imgDetails['version']) || $imgDetails['version'] != self::META_VERSION) {
                 if ($useMetaData) {
                     $imageSize[0] = $imageMetaData['width'] ?? 0;
                     $imageSize[1] = $imageMetaData['height'] ?? 0;
@@ -569,6 +571,7 @@ class LightboxPhotoSwipe
                         $fileSmall = '';
                     }
                     $imgDetails = [
+                        'version'         => self::META_VERSION,
                         'imageSize'       => $imageSize,
                         'fileSmall'       => $fileSmall,
                         'exifCamera'      => '',
@@ -599,7 +602,13 @@ class LightboxPhotoSwipe
                         }
                     }
                     if ($cacheKey !== false && $this->optionsManager->getOption('use_transients')) {
-                        set_transient($cacheKey, $imgDetails, self::CACHE_EXPIRE_IMG_DETAILS);
+                        if ($isLocal) {
+                            // Local image details will never expire as they get removed, when then file is delete
+                            set_transient($cacheKey, $imgDetails);
+                        } else {
+                            // Remote image details will be added using an expiration date
+                            set_transient($cacheKey, $imgDetails, self::CACHE_EXPIRE_IMG_DETAILS);
+                        }
                     }
                 }
             }
@@ -836,6 +845,22 @@ class LightboxPhotoSwipe
                 $this->optionsManager->setOption('disabled_post_ids', $disabledPostIdsCurrent, true);
             }
         }
+    }
+
+    /**
+     * Filter for deleting files to delete the transient of the file, if needed
+     */
+    public function onDeleteFile($file)
+    {
+        if (is_readable($file)) {
+            $imgMtime = @filemtime($file);
+            if ($imgMtime !== false) {
+                $cacheKey = sprintf('%s-image-%s', self::SLUG, hash('md5', $file . $imgMtime));
+                delete_transient($cacheKey);
+            }
+        }
+
+        return $file;
     }
 
     /**
@@ -1128,8 +1153,11 @@ class LightboxPhotoSwipe
     {
         $imageSize = [0, 0];
         if ($extension !== 'svg') {
-            if (is_readable($file)) {
+            if (is_readable($file) || str_starts_with($file, 'http://') || str_starts_with($file, 'https://')) {
                 $imageSize = @getimagesize($file);
+                if ($imageSize === false) {
+                    $imageSize = [0, 0];
+                }
             }
         } else {
             if (function_exists('simplexml_load_file')) {

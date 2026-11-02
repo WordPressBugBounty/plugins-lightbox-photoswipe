@@ -4,7 +4,7 @@ Contributors: awelzel
 Tags: lightbox, photoswipe, attachments, images, gallery
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 5.14.0
+Stable tag: 5.17.0
 Donate link: https://paypal.me/ArnoWelzel
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -155,6 +155,16 @@ The main repository for the source code can be found at [https://codeberg.org/as
 5. Desktop options in the backend
 
 == Changelog ==
+
+= 5.17.0 =
+
+* Add check for missing image size and correct version info.
+
+= 5.15.0 =
+
+* Implement persistent transients for metadata of local images.
+* Increased expiration timeout for temporary transients (used for external images) from 1 to 7 days.
+* Fixed missing size query of external images.
 
 = 5.14.0 =
 
