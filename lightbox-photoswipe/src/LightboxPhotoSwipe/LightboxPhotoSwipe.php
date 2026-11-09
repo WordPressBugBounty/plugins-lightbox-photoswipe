@@ -8,7 +8,7 @@ defined('ABSPATH') or die();
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.17.0';
+    const VERSION = '5.18.0';
     const SLUG = 'lightbox-photoswipe';
     const META_VERSION = '24';
     const CACHE_EXPIRE_IMG_DETAILS = 86400 * 7;
