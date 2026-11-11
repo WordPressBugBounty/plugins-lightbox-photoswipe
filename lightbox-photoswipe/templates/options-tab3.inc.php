@@ -1,29 +1,5 @@
 <?php defined('ABSPATH') or die(); ?>
 <table id="lbwps-tab-3" class="form-table" style="display:none;">
-    <tr class="lbwps-ver4">
-        <th scope="row">
-            <?php echo esc_html__('Skin', 'lightbox-photoswipe'); ?>
-        </th>
-        <td>
-            <?php $this->uiControlRadio(
-                'skin',
-                [
-                    '1',
-                    '2',
-                    '3',
-                    '4'
-                ],
-                [
-                    esc_html__('Original', 'lightbox-photoswipe'),
-                    esc_html__('Original with solid background', 'lightbox-photoswipe'),
-                    esc_html__('New share symbol', 'lightbox-photoswipe'),
-                    esc_html__('New share symbol with solid background', 'lightbox-photoswipe'),
-                ],
-                '<br>'
-            );
-            ?>
-        </td>
-    </tr>
     <tr>
         <th scope="row">
             <?php echo esc_html__('Spacing between pictures', 'lightbox-photoswipe'); ?>
@@ -43,7 +19,7 @@
             <p class="description"><?php echo esc_html__('Space between pictures relative to screenwidth.', 'lightbox-photoswipe'); ?></p>
         </td>
     </tr>
-    <tr class="lbwps-ver5">
+    <tr>
         <th scope="row">
             <?php echo esc_html__('Background opacity', 'lightbox-photoswipe'); ?>
         </th>
@@ -62,7 +38,7 @@
             <p class="description"><?php echo esc_html__('Opacity of the background for the lightbox (values below 100% may not work well with some caption styles).', 'lightbox-photoswipe'); ?></p>
         </td>
     </tr>
-    <tr class="lbwps-ver5">
+    <tr>
         <th scope="row">
             <?php echo esc_html__('Image padding', 'lightbox-photoswipe'); ?>
         </th>

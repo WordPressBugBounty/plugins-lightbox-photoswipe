@@ -4,7 +4,7 @@ Contributors: awelzel
 Tags: lightbox, photoswipe, attachments, images, gallery
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 5.18.0
+Stable tag: 5.19.0
 Donate link: https://paypal.me/ArnoWelzel
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -29,6 +29,12 @@ Please keep in mind: not the visible thumbnail is relevant, but only the image l
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Frequently Asked Questions ==
+
+= Why was PhotoSwipe 4 removed? =
+
+PhotoSwipe 4 has been "end of life" for a long time and contains a number of issues with some devices which can not be fixed. Also the sharing options did not work properly any longer and also had security issues. Therefor only PhotoSwipe 5 is supported.
+
+Please do not downgrade to older versions which include PhotoSwipe 4! This will put your website to risk! There are known security issues with PhotoSwipe 4!
 
 = Issues with "optimizing" plugins =
 
@@ -100,21 +106,9 @@ function my_lbwps_caption_title($title, $id)
 add_filter('lbwps_caption_title', 'my_lbwps_caption_title', 10, 2);
 `
 
-= Changes with PhotoSwipe 5 =
-
-PhotoSwipe 5 improves the overall performance and compatibility with newer mobile devices like the iPhone 13. However, some features are no longer supported by that version:
-
-1) Customizing the display of image counter and zoom button (this may be added in future updates).
-
-2) All mobile specific options (some options may return in future updates).
-
-3) Sharing options (some options may return in future updates).
-
 = How to style the caption =
 
-Which styles are available depends on which PhotoSwipe version you use and what kind of caption.
-
-Please use the web developer tools of your browser to examine the caption elements and to learn which CSS classes are used.
+Please use the web developer tools of your browser to examine the caption elements in an opened lightbox view and to learn which CSS classes are used.
 
 = Why is there no "zoom animation" when opening the lightbox? =
 
@@ -156,9 +150,15 @@ The main repository for the source code can be found at [https://codeberg.org/as
 
 == Changelog ==
 
+= 5.19.0 =
+
+* Properly handle URL-encoded special characters, such as German umlauts, in the file name (thanks to Felix Edelmann).
+* Implemented DOMPurify to properly sanitize caption output in the frontend.
+* Removed PhotoSwipe 4 since this version is long end of life and not safe to use any longer.
+
 = 5.18.0 =
 
-* Fixed vulnerability which allowed frontend code injection using image attributes.
+* Fixed vulnerability which allowed frontend code injection using image attributes (thanks to Nguyen Huy Tien for reporting this).
 
 = 5.17.0 =
 

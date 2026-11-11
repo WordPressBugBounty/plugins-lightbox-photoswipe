@@ -47,9 +47,7 @@ make build
 You should then see an output like this:
 
 ```
-Building frontend script (PhotoSwipe 4)
-Building frontend scripts (PhotoSwipe 5)
-Building styles for PhotoSwipe 4
+Building frontend scripts for PhotoSwipe 5
 Building style for PhotoSwipe 5
 ```
 

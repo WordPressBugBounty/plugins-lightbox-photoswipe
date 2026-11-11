@@ -123,11 +123,15 @@ let lbwpsInit = function(domUpdate) {
     };
 
     let sanitizeCaption = function (caption) {
-        const regexp = /(?:(?!(<span class="([^"]+)">)|(<\/span>)|(<br>)|(<br \/>)|(<b>)|(<\/b>)|(<i>)|(<\/i>)|(<em>)|(<\/em>)|(<strong>)|(<\/strong>)|(<div>)|(<div (style|class)="([^"])+">)|(<\/div>)|(<a href="([^"]+)">)|(<a ((href|target|style)="([^"]+)")+ (href|target|style)="([^"]+)">)|(<a (href|target|style)="([^"]+)" (href|target|style)="([^"]+)" (href|target|style)="([^"]+)">)|(<\/a))(<[^>]+>))*/gi;
-        if (typeof caption === 'string' || caption instanceof String) {
-            return caption.replaceAll(regexp, '');
+        if(!DOMPurify.isSupported) {
+            // Fallback to avoid malicious code even if DOMPurify is not supported on this browser
+            let result = caption.replaceAll('<', '');
+            return result.replaceAll('>', '');
         }
-        return caption;
+        return DOMPurify.sanitize(caption, {
+            ALLOWED_TAGS: ['a', 'b', 'i', 'em', 'br', 'div', 'span'],
+            ALLOWED_ATTR: ['class', 'style', 'href', 'target']
+        });
     }
 
     let parseThumbnailElements = function (link, id) {
@@ -369,18 +373,6 @@ let lbwpsInit = function(domUpdate) {
                 right: parseInt(lbwpsOptions.padding_right)
             }
         }
-
-        // Not supported any longer by PhotoSwipe 5 itself
-        // Maybe we add this in future versions
-
-        /*
-        options.counterEl = lbwpsOptions.show_counter === '1';
-        options.closeOnScroll = lbwpsOptions.wheelmode === 'close';
-        options.switchOnScroll = lbwpsOptions.wheelmode === 'switch';
-        options.zoomEl = lbwpsOptions.show_zoom === '1';
-        options.tapToToggleControls = lbwpsOptions.taptotoggle === '1';
-        */
-
 
         const lightbox = new PhotoSwipeLightbox(options);
         window.lbwpsPhotoSwipe = lightbox;

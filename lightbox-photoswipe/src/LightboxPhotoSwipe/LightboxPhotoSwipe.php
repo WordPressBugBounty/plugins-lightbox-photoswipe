@@ -8,7 +8,7 @@ defined('ABSPATH') or die();
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.18.0';
+    const VERSION = '5.19.0';
     const SLUG = 'lightbox-photoswipe';
     const META_VERSION = '24';
     const CACHE_EXPIRE_IMG_DETAILS = 86400 * 7;
@@ -17,9 +17,9 @@ class LightboxPhotoSwipe
     const SUPPORTED_FORMATS = ['jpg', 'jpeg', 'jpe', 'gif', 'png', 'bmp', 'tif', 'tiff', 'ico', 'webp', 'svg', 'avif'];
     const SUPPORTED_FORMATS_EXIF = ['jpg', 'jpeg', 'jpe', 'tif', 'tiff'];
 
-    const PHP_MINIMUM_VERSION = 80200;
+    const PHP_MINIMUM_VERSION = 80300;
 
-    const PHP_MINIMUM_VERSION_DISPLAY = '8.2';
+    const PHP_MINIMUM_VERSION_DISPLAY = '8.3';
 
     private static $instance;
 
@@ -139,107 +139,47 @@ class LightboxPhotoSwipe
             return;
         }
 
-        $version = apply_filters('lbwps_version', $this->optionsManager->getOption('version'), get_the_ID());
-        if (5 === (int)$version) {
-            if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) {
-                wp_enqueue_script_module(
-                    'lbwps-photoswipe5',
-                    sprintf('%sassets/ps5/frontend.js', $this->getPluginUrl()),
-                    [],
-                    self::VERSION
-                );
-                wp_enqueue_style(
-                    'lbwps-styles-photoswipe5-local',
-                    sprintf('%sassets/ps5/lib/photoswipe-local.css', $this->getPluginUrl()),
-                    false,
-                    self::VERSION
-                );
-                wp_enqueue_style(
-                    'lbwps-styles-photoswipe5-dynamic-caption',
-                    sprintf(
-                        '%sassets/ps5/dynamic-caption/photoswipe-dynamic-caption-plugin.css',
-                        $this->getPluginUrl()
-                    ),
-                    false,
-                    self::VERSION
-                );
-            } else {
-                wp_enqueue_script_module(
-                    'lbwps-photoswipe5',
-                    sprintf('%sassets/ps5/frontend.min.js', $this->getPluginUrl()),
-                    [],
-                    self::VERSION
-                );
-                wp_enqueue_style(
-                    'lbwps-styles-photoswipe5-main',
-                    sprintf('%sassets/ps5/styles/main.css', $this->getPluginUrl()),
-                    false,
-                    self::VERSION
-                );
-            }
+        if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) {
+            wp_enqueue_script_module(
+                'lbwps-purify',
+                sprintf('%sassets/purify/purify.js', $this->getPluginUrl()),
+                [],
+                self::VERSION
+            );
+            wp_enqueue_script_module(
+                'lbwps-photoswipe5',
+                sprintf('%sassets/ps5/frontend.js', $this->getPluginUrl()),
+                [],
+                self::VERSION
+            );
+            wp_enqueue_style(
+                'lbwps-styles-photoswipe5-local',
+                sprintf('%sassets/ps5/lib/photoswipe-local.css', $this->getPluginUrl()),
+                false,
+                self::VERSION
+            );
+            wp_enqueue_style(
+                'lbwps-styles-photoswipe5-dynamic-caption',
+                sprintf(
+                    '%sassets/ps5/dynamic-caption/photoswipe-dynamic-caption-plugin.css',
+                    $this->getPluginUrl()
+                ),
+                false,
+                self::VERSION
+            );
         } else {
-            if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) {
-                wp_enqueue_script(
-                    'lbwps-photoswipe',
-                    sprintf('%sassets/ps4/lib/photoswipe.js', $this->getPluginUrl()),
-                    [],
-                    self::VERSION
-                );
-                wp_enqueue_script(
-                    'lbwps-photoswipe-ui',
-                    sprintf('%sassets/ps4/lib/photoswipe-ui-default.js', $this->getPluginUrl()),
-                    [],
-                    self::VERSION
-                );
-                wp_enqueue_script(
-                    'lbwps',
-                    sprintf('%sassets/ps4/frontend.js', $this->getPluginUrl()),
-                    [],
-                    self::VERSION
-                );
-            } else {
-                wp_enqueue_script(
-                    'lbwps',
-                    sprintf('%sassets/ps4/frontend.min.js', $this->getPluginUrl()),
-                    [],
-                    self::VERSION
-                );
-            }
-            switch ($this->optionsManager->getOption('skin')) {
-                case '2':
-                    $skin = 'classic-solid';
-                    break;
-                case '3':
-                    $skin = 'default';
-                    break;
-                case '4':
-                    $skin = 'default-solid';
-                    break;
-                default:
-                    $skin = 'classic';
-                    break;
-            }
-            if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) {
-                wp_enqueue_style(
-                    'lbwps-styles-photoswipe',
-                    sprintf('%sassets/ps4/lib/photoswipe.css', $this->getPluginUrl()),
-                    false,
-                    self::VERSION
-                );
-                wp_enqueue_style(
-                    'lbwps-styles',
-                    sprintf('%sassets/ps4/lib/skins/%s/skin.css', $this->getPluginUrl(), $skin),
-                    false,
-                    self::VERSION
-                );
-            } else {
-                wp_enqueue_style(
-                    'lbwps-styles',
-                    sprintf('%sassets/ps4/styles/%s.css', $this->getPluginUrl(), $skin),
-                    false,
-                    self::VERSION
-                );
-            }
+            wp_enqueue_script_module(
+                'lbwps-photoswipe5',
+                sprintf('%sassets/ps5/frontend.min.js', $this->getPluginUrl()),
+                [],
+                self::VERSION
+            );
+            wp_enqueue_style(
+                'lbwps-styles-photoswipe5-main',
+                sprintf('%sassets/ps5/styles/main.css', $this->getPluginUrl()),
+                false,
+                self::VERSION
+            );
         }
         $this->enqueueFrontendOptions();
     }
@@ -251,17 +191,6 @@ class LightboxPhotoSwipe
     {
         if (!$this->enabled) {
             return;
-        }
-
-        $version = apply_filters('lbwps_version', $this->optionsManager->getOption('version'), get_the_ID());
-        if (4 === (int)$version) {
-            ob_start();
-            include(self::BASEPATH.'templates/frontend.inc.php');
-            $footer = ob_get_clean();
-
-            $footer = apply_filters('lbwps_markup', $footer);
-            /* This must not be escaped, since the content is HTML */
-            echo $footer;
         }
 
         if ($this->obActive) {
@@ -417,6 +346,9 @@ class LightboxPhotoSwipe
 
                 // Remove leading slash
                 $file = ltrim($file, '/');
+
+                // parse URL-encoded special characters, such as German umlauts, in the file name
+				$file = rawurldecode($file);
 
                 // Add local path only if the file is not an external URL
                 if (substr($file, 0, 6) != 'ftp://' &&
@@ -603,7 +535,7 @@ class LightboxPhotoSwipe
                     }
                     if ($cacheKey !== false && $this->optionsManager->getOption('use_transients')) {
                         if ($isLocal) {
-                            // Local image details will never expire as they get removed, when then file is delete
+                            // Local image details will never expire as they get removed, when then file is deleted
                             set_transient($cacheKey, $imgDetails);
                         } else {
                             // Remote image details will be added using an expiration date
@@ -1042,11 +974,6 @@ class LightboxPhotoSwipe
     protected function enqueueFrontendOptions()
     {
         $translation_array = [
-            'label_facebook' => __('Share on Facebook', 'lightbox-photoswipe'),
-            'label_twitter' => __('Tweet', 'lightbox-photoswipe'),
-            'label_pinterest' => __('Pin it', 'lightbox-photoswipe'),
-            'label_download' => __('Download image', 'lightbox-photoswipe'),
-            'label_copyurl' => __('Copy image URL', 'lightbox-photoswipe'),
             'label_ui_close' => __('Close [Esc]', 'lightbox-photoswipe'),
             'label_ui_zoom' => __('Zoom', 'lightbox-photoswipe'),
             'label_ui_prev' => __('Previous [←]', 'lightbox-photoswipe'),
@@ -1056,24 +983,12 @@ class LightboxPhotoSwipe
             'label_ui_download' => __('Download image', 'lightbox-photoswipe'),
         ];
         $boolOptions = [
-            'share_facebook',
-            'share_twitter',
-            'share_pinterest',
-            'share_download',
-            'share_direct',
-            'share_copyurl',
-            'close_on_drag',
             'history',
-            'show_counter',
             'show_fullscreen',
             'show_download',
-            'show_zoom',
             'show_caption',
             'loop',
-            'pinchtoclose',
-            'taptotoggle',
             'close_on_click',
-            'fulldesktop',
             'use_alt',
             'usecaption',
             'desktop_slider',
@@ -1081,10 +996,6 @@ class LightboxPhotoSwipe
         foreach($boolOptions as $boolOption) {
             $translation_array[$boolOption] = $this->optionsManager->getOption($boolOption) === '1' ? '1' : '0';
         }
-        $customLink = ('' === $this->optionsManager->getOption('share_custom_link'))?'{{raw_image_url}}':$this->optionsManager->getOption('share_custom_link');
-        $translation_array['share_custom_label'] = ($this->optionsManager->getOption('share_custom') == '1')?htmlspecialchars($this->optionsManager->getOption('share_custom_label')):'';
-        $translation_array['share_custom_link'] = ($this->optionsManager->getOption('share_custom') == '1')?htmlspecialchars($customLink):'';
-        $translation_array['wheelmode'] = htmlspecialchars($this->optionsManager->getOption('wheelmode'));
         $translation_array['spacing'] = intval($this->optionsManager->getOption('spacing'));
         $translation_array['idletime'] = intval($this->optionsManager->getOption('idletime'));
         $translation_array['hide_scrollbars'] = intval($this->optionsManager->getOption('hide_scrollbars'));

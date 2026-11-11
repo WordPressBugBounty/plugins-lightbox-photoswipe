@@ -11,11 +11,11 @@ if (!defined('PHP_VERSION_ID')) {
     $version = explode('.', PHP_VERSION);
     define('PHP_VERSION_ID', ($version[0] * 10000 + $version[1] * 100 + $version[2]));
 }
-if (PHP_VERSION_ID < 70400) {
+if (PHP_VERSION_ID < 80300) {
     echo "=================================================================\n";
     echo "Warning! You are using a very old PHP version!\n";
     echo "This is no supported any may cause errors or unpredicted results!\n";
-    echo "Please use at least PHP 7.4!\n";
+    echo "Please use at least PHP 8.3!\n";
     echo "=================================================================\n";
 }
 
@@ -32,18 +32,11 @@ class Build
         // Frontend script:
         // Combine all frontend scripts to one minified file
 
-        echo "Building frontend script (PhotoSwipe 4)\n";
-
-        $minifyJs = new Minify\JS();
-        $minifyJs->add('assets/ps4/lib/photoswipe.js');
-        $minifyJs->add('assets/ps4/lib/photoswipe-ui-default.js');
-        $minifyJs->add('assets/ps4/frontend.js');
-        $minifyJs->minify('assets/ps4/frontend.min.js');
-
-        echo "Building frontend scripts (PhotoSwipe 5)\n";
+        echo "Building frontend scripts for PhotoSwipe 5\n";
 
         $minifyJs = new Minify\JS();
         $minifyJs->add('assets/ps5/frontend.js');
+        $minifyJs->add('assets/purify/purify.js');
         $minifyJs->minify('assets/ps5/frontend.min.js');
 
         $minifyJs = new Minify\JS();
@@ -61,46 +54,6 @@ class Build
         $minifyJs = new Minify\JS();
         $minifyJs->add('assets/ps5/download/photoswipe-download.esm.js');
         $minifyJs->minify('assets/ps5/download/photoswipe-download.esm.min.js');
-
-        // Skins:
-        // Combine all styles for each skine to one minifed file which includes all images as data URIs
-
-        $sourcePhotoswipe = file_get_contents('assets/ps4/lib/photoswipe.css');
-        echo sprintf("Building styles for PhotoSwipe 4\n");
-        foreach (['classic', 'classic-solid', 'default', 'default-solid'] as $skin) {
-            $minifyCss = new Minify\CSS();
-            $source = $sourcePhotoswipe.file_get_contents(sprintf('assets/ps4/lib/skins/%s/skin.css', $skin));
-            $matches = [];
-            if (preg_match_all('/url\\((.+)\\)/m', $source, $matches)) {
-                $num = 0;
-                while ($num < count($matches[1])) {
-                    $fileName = $matches[1][$num];
-                    $posExt = strpos($fileName, '.');
-                    if ($posExt) {
-                        $ext = substr($fileName, $posExt + 1);
-                        switch ($ext) {
-                            case 'svg':
-                                $mimeType = 'image/svg+xml';
-                                break;
-                            default:
-                                $mimeType = 'image/'.$ext;
-                                break;
-                        }
-                        $data = sprintf(
-                            'data:%s;base64,%s',
-                            $mimeType,
-                            base64_encode(
-                                file_get_contents(sprintf('assets/ps4/lib/skins/%s/%s', $skin, $fileName))
-                            )
-                        );
-                        $source = str_replace($matches[0][$num], sprintf('url(\'%s\')', $data), $source);
-                    }
-                    $num++;
-                }
-            }
-            $minifyCss->add($source);
-            $minifyCss->minify(sprintf('assets/ps4/styles/%s.css', $skin));
-        }
 
         // Styles for PhotoSwipe 5
         echo sprintf("Building style for PhotoSwipe 5\n");

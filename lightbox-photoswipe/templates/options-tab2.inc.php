@@ -2,15 +2,6 @@
 <table id="lbwps-tab-2" class="form-table">
     <tr>
         <th scope="row">
-            <?php echo esc_html__('PhotoSwipe version to use', 'lightbox-photoswipe'); ?>
-        </th>
-        <td>
-            <?php $this->uiControlRadio('version', ['4', '5'], [esc_html__('version 4', 'lightbox-photoswipe'), esc_html__('version 5', 'lightbox-photoswipe')], ' '); ?>
-            <p class="description"><?php echo esc_html__('The available options depend on the PhotoSwipe version. UI customizations done for version 4 may not work for version 5.', 'lightbox-photoswipe'); ?></p>
-        </td>
-    </tr>
-    <tr>
-        <th scope="row">
             <?php echo esc_html__('Excluded pages/posts', 'lightbox-photoswipe'); ?>
         </th>
         <td>
@@ -35,9 +26,7 @@
         </th>
         <td>
             <label><?php $this->uiControlCheckbox('show_fullscreen') ?>&nbsp;<?php echo esc_html__('Show fullscreen button', 'lightbox-photoswipe'); ?></label><br>
-            <label class="lbwps-ver5"><?php $this->uiControlCheckbox('show_download') ?>&nbsp;<?php echo esc_html__('Show download button', 'lightbox-photoswipe'); ?></label>
-            <label class="lbwps-ver4"><?php $this->uiControlCheckbox('show_counter') ?>&nbsp;<?php echo esc_html__('Show picture counter', 'lightbox-photoswipe'); ?></label><br>
-            <label class="lbwps-ver4"><?php $this->uiControlCheckbox('show_zoom') ?>&nbsp;<?php echo esc_html__('Show zoom button if available', 'lightbox-photoswipe'); ?></label>
+            <label><?php $this->uiControlCheckbox('show_download') ?>&nbsp;<?php echo esc_html__('Show download button', 'lightbox-photoswipe'); ?></label>
         </td>
     </tr>
     <tr>

@@ -31,7 +31,7 @@
             <label><?php $this->uiControlCheckbox('showexif_date'); ?> <?php echo esc_html__('Show date if available', 'lightbox-photoswipe'); ?></label>
         </td>
     </tr>
-    <tr class="lbwps-ver5">
+    <tr>
         <th scope="row">
             <?php echo esc_html__('Type of caption', 'lightbox-photoswipe'); ?>
         </th>

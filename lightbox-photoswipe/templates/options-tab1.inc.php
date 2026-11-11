@@ -4,11 +4,7 @@
     <?php echo esc_html__('PHP version', 'lightbox-photoswipe'); ?>: <?php echo esc_html(phpversion()); ?><br>
     <?php echo esc_html__('Metadata version', 'lightbox-photoswipe'); ?>: <?php echo esc_html(self::META_VERSION); ?></p>
 <?php
-if(PHP_VERSION_ID < 70400) {
-?>
-    <p class="lbwps_text"><?php echo esc_html__('Warning! You are using a very old version of PHP (older than 7.4)! This is a security risk and either WordPress or this plugin may not work correctly with it. Please upgrade PHP or ask your hoster to do so!', 'lightbox-photoswipe'); ?></p>
-<?php
-} else if(PHP_VERSION_ID < self::PHP_MINIMUM_VERSION) {
+if(PHP_VERSION_ID < self::PHP_MINIMUM_VERSION) {
 ?>
     <p class="lbwps_text"><?php echo /* translators: 1: PHP version */ esc_html(sprintf(__('Warning! Your PHP is outdated (older than %s)! This may be a security risk! Please upgrade PHP or ask your hoster to do so!', 'lightbox-photoswipe'), self::PHP_MINIMUM_VERSION_DISPLAY)); ?></p>
 <?php
