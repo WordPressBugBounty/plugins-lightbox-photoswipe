@@ -8,11 +8,11 @@ defined('ABSPATH') or die();
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.19.0';
+    const VERSION = '5.20.0';
     const SLUG = 'lightbox-photoswipe';
-    const META_VERSION = '24';
-    const CACHE_EXPIRE_IMG_DETAILS = 86400 * 7;
-    const DB_VERSION = 36;
+    const META_VERSION = '25';
+    const CACHE_EXPIRE_IMG_DETAILS = 86400;
+    const DB_VERSION = 37;
     const BASEPATH = WP_PLUGIN_DIR.'/'.self::SLUG.'/';
     const SUPPORTED_FORMATS = ['jpg', 'jpeg', 'jpe', 'gif', 'png', 'bmp', 'tif', 'tiff', 'ico', 'webp', 'svg', 'avif'];
     const SUPPORTED_FORMATS_EXIF = ['jpg', 'jpeg', 'jpe', 'tif', 'tiff'];
@@ -80,8 +80,6 @@ class LightboxPhotoSwipe
             add_action( 'add_meta_boxes', [$this, 'metaBox'] );
             add_action( 'save_post', [$this, 'metaBoxSave'] );
         }
-
-        add_filter( 'wp_delete_file', [$this, 'onDeleteFile'] );
 
         register_activation_hook($pluginFile, [$this, 'onActivate']);
         register_deactivation_hook($pluginFile, [$this, 'onDeactivate']);
@@ -534,13 +532,7 @@ class LightboxPhotoSwipe
                         }
                     }
                     if ($cacheKey !== false && $this->optionsManager->getOption('use_transients')) {
-                        if ($isLocal) {
-                            // Local image details will never expire as they get removed, when then file is deleted
-                            set_transient($cacheKey, $imgDetails);
-                        } else {
-                            // Remote image details will be added using an expiration date
-                            set_transient($cacheKey, $imgDetails, self::CACHE_EXPIRE_IMG_DETAILS);
-                        }
+                        set_transient($cacheKey, $imgDetails, self::CACHE_EXPIRE_IMG_DETAILS);
                     }
                 }
             }
@@ -780,22 +772,6 @@ class LightboxPhotoSwipe
     }
 
     /**
-     * Filter for deleting files to delete the transient of the file, if needed
-     */
-    public function onDeleteFile($file)
-    {
-        if (is_readable($file)) {
-            $imgMtime = @filemtime($file);
-            if ($imgMtime !== false) {
-                $cacheKey = sprintf('%s-image-%s', self::SLUG, hash('md5', $file . $imgMtime));
-                delete_transient($cacheKey);
-            }
-        }
-
-        return $file;
-    }
-
-    /**
      * Hook for plugin activation
      */
     public function onActivate()
@@ -827,6 +803,10 @@ class LightboxPhotoSwipe
         }
         if (intval($dbVersion) < 36) {
             delete_option('lightbox_photoswipe_add_lazyloading');
+        }
+        if (intval($dbVersion) < 37) {
+            // Clean up persistent transients
+            $wpdb->query('delete from wp_options where option_name like "_transient_lightbox-photoswipe-image-%" and autoload="on"');
         }
         if ((int)$dbVersion !== self::DB_VERSION) {
             $this->optionsManager->setOption('db_version', self::DB_VERSION, true);

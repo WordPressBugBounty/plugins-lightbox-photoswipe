@@ -4,7 +4,7 @@ Contributors: awelzel
 Tags: lightbox, photoswipe, attachments, images, gallery
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 5.19.0
+Stable tag: 5.20.0
 Donate link: https://paypal.me/ArnoWelzel
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,7 +32,7 @@ Please keep in mind: not the visible thumbnail is relevant, but only the image l
 
 = Why was PhotoSwipe 4 removed? =
 
-PhotoSwipe 4 has been "end of life" for a long time and contains a number of issues with some devices which can not be fixed. Also the sharing options did not work properly any longer and also had security issues. Therefor only PhotoSwipe 5 is supported.
+PhotoSwipe 4 has been "end of life" for a long time and contains a number of issues with some devices which can not be fixed. Also the sharing options did not work properly any longer and also had security issues.
 
 Please do not downgrade to older versions which include PhotoSwipe 4! This will put your website to risk! There are known security issues with PhotoSwipe 4!
 
@@ -149,6 +149,10 @@ The main repository for the source code can be found at [https://codeberg.org/as
 5. Desktop options in the backend
 
 == Changelog ==
+
+= 5.20.0 =
+
+* Transients for metadata of local images are stored with an expiration date again to avoid bloat in the database.
 
 = 5.19.0 =
 
