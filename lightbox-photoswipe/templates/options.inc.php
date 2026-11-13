@@ -19,7 +19,6 @@ include('options-tab2.inc.php');
 include('options-tab3.inc.php');
 include('options-tab4.inc.php');
 include('options-tab5.inc.php');
-include('options-tab6.inc.php');
 $this->uiFormEnd();
 ?>
 </div>

@@ -4,7 +4,7 @@ Contributors: awelzel
 Tags: lightbox, photoswipe, attachments, images, gallery
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 5.20.0
+Stable tag: 5.21.0
 Donate link: https://paypal.me/ArnoWelzel
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -149,6 +149,10 @@ The main repository for the source code can be found at [https://codeberg.org/as
 5. Desktop options in the backend
 
 == Changelog ==
+
+= 5.21.0 =
+
+* Fixed a backend warning caused by the removal of PhotoSwipe 4 and the options for it.
 
 = 5.20.0 =
 
