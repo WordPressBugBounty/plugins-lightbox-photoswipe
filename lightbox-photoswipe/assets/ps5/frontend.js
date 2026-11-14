@@ -123,15 +123,28 @@ let lbwpsInit = function(domUpdate) {
     };
 
     let sanitizeCaption = function (caption) {
+        // No caption provided, then there is no need for validation
+        if ('' === caption) {
+            return '';
+        }
         if(!DOMPurify.isSupported) {
             // Fallback to avoid malicious code even if DOMPurify is not supported on this browser
             let result = caption.replaceAll('<', '');
             return result.replaceAll('>', '');
         }
-        return DOMPurify.sanitize(caption, {
-            ALLOWED_TAGS: ['a', 'b', 'i', 'em', 'br', 'div', 'span'],
-            ALLOWED_ATTR: ['class', 'style', 'href', 'target']
-        });
+        let sanitizedCaption = '';
+        try {
+            sanitizedCaption = DOMPurify.sanitize(caption, {
+                ALLOWED_TAGS: ['a', 'b', 'i', 'em', 'br', 'div', 'span'],
+                ALLOWED_ATTR: ['class', 'style', 'href', 'target']
+            });
+        } catch(error) {
+            console.log(error);
+            sanitizedCaption = '';
+        } finally {
+        }
+
+        return sanitizedCaption;
     }
 
     let parseThumbnailElements = function (link, id) {

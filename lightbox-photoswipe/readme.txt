@@ -4,7 +4,7 @@ Contributors: awelzel
 Tags: lightbox, photoswipe, attachments, images, gallery
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 5.21.0
+Stable tag: 5.22.0
 Donate link: https://paypal.me/ArnoWelzel
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -150,6 +150,10 @@ The main repository for the source code can be found at [https://codeberg.org/as
 
 == Changelog ==
 
+= 5.22.0 =
+
+* Refactoring of caption sanitizing avoid errors opening PhotoSwipe in case DOMPurify throws an exception.
+
 = 5.21.0 =
 
 * Fixed a backend warning caused by the removal of PhotoSwipe 4 and the options for it.
@@ -185,7 +189,7 @@ The main repository for the source code can be found at [https://codeberg.org/as
 = 5.13.0 =
 
 * Code refactoring to have all assets for PhotoSwipe 4 in one common folder.
-* Fix use of captions in <figcaption> elements to be used only, if they are valid for an image.
+* Fix use of captions in `<figcaption>` elements to be used only, if they are valid for an image.
 
 = 5.12.0 =
 
