@@ -375,8 +375,8 @@ let lbwpsInit = function(domUpdate) {
             spacing: lbwpsOptions.spacing/100,
             loop: lbwpsOptions.loop === '1',
             wheelToZoom: false,
-            pinchToClose: lbwpsOptions.pinchtoclose === '1',
-            closeOnVerticalDrag: lbwpsOptions.close_on_drag === '1',
+            pinchToClose: true,
+            closeOnVerticalDrag: true,
             clickToCloseNonZoomable: true,
             bgOpacity: lbwpsOptions.bg_opacity / 100,
             padding: {
