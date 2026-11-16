@@ -8,7 +8,7 @@ defined('ABSPATH') or die();
  */
 class LightboxPhotoSwipe
 {
-    const VERSION = '5.23.0';
+    const VERSION = '5.24.0';
     const SLUG = 'lightbox-photoswipe';
     const META_VERSION = '25';
     const CACHE_EXPIRE_IMG_DETAILS = 86400;
@@ -1042,33 +1042,66 @@ class LightboxPhotoSwipe
      */
     protected function getImageSize($file, $extension)
     {
+        // By default, we don't know the image size yet
         $imageSize = [0, 0];
+
+        // If the file name is an URL treat is as HTTP request
+        $isHTTP = (str_starts_with($file, 'http://') || str_starts_with($file, 'https://'));
+        if ($isHTTP) {
+            // Set the user agent to avoid issues with sites which block requests by PHP as user agent
+            $userAgent = ini_get('user_agent');
+            ini_set('user_agent', 'Mozilla/5.0 (X11; Linux x86_64; rv:160.0) Gecko/20100101 Firefox/160.0)');
+
+            // Check, if the URL links to an image at all
+            $isImageType = false;
+            $headers = @get_headers($file);
+            if (is_array($headers)) {
+                foreach ($headers as $header) {
+                    if (str_starts_with(strtolower($header), 'content-type: image/')) {
+                        $isImageType = true;
+                    }
+                }
+            }
+
+            // No image type detected at the given URL, then restore user agent setting and return
+            if (!$isImageType) {
+                ini_set('user_agent', $userAgent);
+
+                return $imageSize;
+            }
+        }
         if ($extension !== 'svg') {
-            if (is_readable($file) || str_starts_with($file, 'http://') || str_starts_with($file, 'https://')) {
+            if ($isHTTP || is_readable($file)) {
                 $imageSize = @getimagesize($file);
                 if ($imageSize === false) {
                     $imageSize = [0, 0];
                 }
             }
-        } else {
-            if (function_exists('simplexml_load_file')) {
-                $svgContent = simplexml_load_file($file);
-                if (false !== $svgContent) {
-                    $svgAttributes = $svgContent->attributes();
-                    if (isset($svgAttributes->viewBox)) {
-                        $viewBox = explode(' ', $svgAttributes->viewBox, 4);
-                        if ($viewBox !== false && count($viewBox) == 4) {
-                            $imageSize[0] = (int)($viewBox[2] - $viewBox[0]);
-                            $imageSize[1] = (int)($viewBox[3] - $viewBox[1]);
-                        }
-                    } else if (isset($svgAttributes->width) && isset($svgAttributes->height)) {
-                        if (str_ends_with($svgAttributes->width, 'px') && str_ends_with($svgAttributes->height, 'px')) {
-                            $imageSize[0] = rtrim($svgAttributes->width, 'px');
-                            $imageSize[1] = rtrim($svgAttributes->height, 'px');
-                        }
+        } else if (function_exists('simplexml_load_file')) {
+            $svgContent = false;
+            if ($isHTTP || is_readable($file)) {
+                $svgContent = @simplexml_load_file($file);
+            }
+            if (false !== $svgContent) {
+                $svgAttributes = $svgContent->attributes();
+                if (isset($svgAttributes->viewBox)) {
+                    $viewBox = explode(' ', $svgAttributes->viewBox, 4);
+                    if ($viewBox !== false && count($viewBox) == 4) {
+                        $imageSize[0] = (int)($viewBox[2] - $viewBox[0]);
+                        $imageSize[1] = (int)($viewBox[3] - $viewBox[1]);
+                    }
+                } else if (isset($svgAttributes->width) && isset($svgAttributes->height)) {
+                    if (str_ends_with($svgAttributes->width, 'px') && str_ends_with($svgAttributes->height, 'px')) {
+                        $imageSize[0] = rtrim($svgAttributes->width, 'px');
+                        $imageSize[1] = rtrim($svgAttributes->height, 'px');
                     }
                 }
             }
+        }
+
+        // If we did an HTTP request, restore the user agent setting
+        if ($isHTTP) {
+            ini_set('user_agent', $userAgent);
         }
 
         return $imageSize;
